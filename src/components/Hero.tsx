@@ -79,14 +79,14 @@ export function Hero() {
         </span>
       </motion.div>
 
-      {/* Main 3-column editorial layout */}
-      <div className="mx-auto mt-10 grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 md:mt-12 md:grid-cols-12 md:gap-6 md:px-10 lg:gap-10">
+      {/* Main editorial layout — 1 col on mobile/tablet, 3 cols on lg+ */}
+      <div className="mx-auto mt-10 grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 md:mt-12 md:px-10 lg:grid-cols-12 lg:gap-10">
         {/* Left: small bio line + Read More */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: easePacific, delay: 0.4 }}
-          className="order-2 text-center md:order-1 md:col-span-3 md:text-left"
+          className="order-2 text-center md:order-1 md:text-left lg:col-span-3 lg:text-left"
         >
           <p className="mx-auto max-w-xs text-[0.95rem] leading-relaxed text-charcoal/80 md:mx-0">
             Poeta, narradora e investigadora cultural del Pacífico
@@ -104,13 +104,13 @@ export function Hero() {
         </motion.div>
 
         {/* Center: photo with sun circle behind */}
-        <div className="relative order-1 flex h-[420px] items-center justify-center overflow-hidden md:order-2 md:col-span-6 md:h-[560px] lg:h-[600px]">
-          {/* Pacific Sun yellow disc behind the photo — clamps to column */}
+        <div className="relative order-1 flex h-[420px] items-center justify-center overflow-hidden md:order-2 md:h-[560px] lg:col-span-6 lg:h-[600px]">
+          {/* Pacific Sun yellow disc behind the photo — scales with breakpoint */}
           <motion.div
             initial={{ scale: 0.78, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.9, ease: easeOut, delay: 0.15 }}
-            className="absolute z-0 h-[280px] w-[280px] rounded-full bg-pacific-sun md:h-[300px] md:w-[300px] lg:h-[720px] lg:w-[720px]"
+            className="absolute z-0 h-[280px] w-[280px] rounded-full bg-pacific-sun md:h-[320px] md:w-[320px] lg:h-[720px] lg:w-[720px]"
             aria-hidden
           />
 
@@ -156,9 +156,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: easePacific, delay: 0.55 }}
-          className="order-3 flex items-center justify-center text-center md:order-3 md:col-span-3 md:justify-start md:text-left"
+          className="order-3 flex items-center justify-center text-center md:order-3 md:justify-start md:text-left lg:col-span-3 lg:justify-start lg:text-left"
         >
-          <h1 className="font-display text-[4.2rem] leading-[0.92] tracking-tight text-charcoal sm:text-5xl md:text-6xl lg:text-[7.4rem]">
+          <h1 className="font-display text-[3.4rem] leading-[0.92] tracking-tight text-charcoal sm:text-5xl md:text-6xl lg:text-[7.4rem]">
             Liz
             <br />
             <span className="italic text-terracotta">Candelo</span>
