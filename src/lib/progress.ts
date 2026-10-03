@@ -81,9 +81,9 @@ export const build: BuildItem[] = [
     section: "05 — Prensa",
     title: "Media gallery & press",
     spec: "Grid de 8 marcos con hand-drawn motifs + lista de prensa/radio/TV/académica. Contenido pendiente: fotos y enlaces de la autora.",
-    status: "in-progress",
-    verdict: "—",
-    note: "Sesión actual. 4 entradas de prensa (prensa/radio/tv/académico) con 'pendiente' honesto en outlet y fecha.",
+    status: "shipped",
+    verdict: "accepted",
+    note: "Crítico pidió fotos reales (no en alcance sin archivo de la autora). 2 rondas: gap-1 era overflow mobile en figcaption, fix pill top-right + caption truncate. Pulido: título sobreprometido → 'Su archivo en medios' + scroll-margin-top global.",
     lastUpdated: "2026-10-03",
   },
   {

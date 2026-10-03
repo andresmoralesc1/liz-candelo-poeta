@@ -109,8 +109,7 @@ export function Press() {
             variants={fadeUp}
             className="font-display mt-4 max-w-4xl text-[2.4rem] leading-[1.04] text-charcoal md:text-[3.4rem]"
           >
-            Lo que <span className="italic text-terracotta">se ha dicho</span>,
-            <br className="hidden md:block" /> lo que <span className="ink-underline">se ha hecho</span>.
+            Su archivo en <span className="italic text-terracotta">medios</span>.
           </motion.h2>
 
           <motion.p

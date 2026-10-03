@@ -36,6 +36,11 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-padding-top: 6rem;
+}
+
+section[id]:not(#inicio) {
+  scroll-margin-top: 6rem;
 }
 
 body {
