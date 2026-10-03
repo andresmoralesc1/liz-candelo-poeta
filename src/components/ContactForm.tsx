@@ -134,6 +134,16 @@ export function ContactForm() {
         />
       </Field>
 
+      {/* Honeypot — hidden from users, blocks naive bots */}
+      <input
+        type="text"
+        name="_gotcha"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden
+        className="absolute h-0 w-0 -left-[9999px] opacity-0"
+      />
+
       <div className="flex flex-col items-stretch gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-[0.78rem] text-charcoal/55">
           Liz responde personalmente. Tus datos no se comparten.

@@ -14,6 +14,7 @@ type ContactBody = {
   email?: string;
   subject?: string;
   message?: string;
+  _gotcha?: string;
 };
 
 const SUBJECT_LABELS: Record<string, string> = {
@@ -30,6 +31,11 @@ export async function POST(req: Request) {
     body = (await req.json()) as ContactBody;
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+  }
+
+  // Honeypot — silently reject if the hidden field is filled.
+  if (body._gotcha && body._gotcha.length > 0) {
+    return NextResponse.json({ ok: true }, { status: 200 });
   }
 
   const name = (body.name ?? "").trim();
