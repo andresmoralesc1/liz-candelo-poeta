@@ -16,7 +16,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lizcandelogrueso.com"),
+  metadataBase: new URL("https://lizcandelo.andresmorales.com.co"),
   title: {
     default: "Liz Candelo Grueso — Poeta, narradora e investigadora cultural",
     template: "%s — Liz Candelo Grueso",
@@ -38,6 +38,9 @@ export const metadata: Metadata = {
       "Poesía, narrativa e investigación cultural desde el Pacífico colombiano.",
     type: "website",
     locale: "es_CO",
+  },
+  alternates: {
+    canonical: "https://lizcandelo.andresmorales.com.co",
   },
 };
 
