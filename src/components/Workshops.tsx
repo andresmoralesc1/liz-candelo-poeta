@@ -23,6 +23,7 @@ interface Workshop {
   kicker: string;
   description: string;
   formats: string[];
+  cta: string;
 }
 
 const workshops: Workshop[] = [
@@ -35,6 +36,7 @@ const workshops: Workshop[] = [
     description:
       "Encuentros para habitar el libro en colectivo: lecturas en voz alta, tertulias, círculos de memoria. La infancia y la poesía como umbral para conversar sobre territorio, cuerpo y cuidado.",
     formats: ["Bibliotecas", "Escuelas", "Comunidades", "Presencial · Virtual"],
+    cta: "Pedir fecha",
   },
   {
     icon: Users,
@@ -45,6 +47,7 @@ const workshops: Workshop[] = [
     description:
       "Itinerarios de escritura y lectura sobre literaturas afrocolombianas, del Pacífico y diaspóricas. Material propio, archivo oral, genealogía. Para grupos con o sin experiencia previa.",
     formats: ["Universidades", "Docentes", "Cohortes a medida", "Presencial · Virtual"],
+    cta: "Diseñar cohorte",
   },
   {
     icon: Mic,
@@ -55,6 +58,7 @@ const workshops: Workshop[] = [
     description:
       "Reflexiones sobre memoria afrocolombiana, poesía, infancia y territorio. Conferencias, paneles y presentaciones de libro adaptadas al público y al tiempo disponible.",
     formats: ["Ferias del libro", "Foros académicos", "Encuentros culturales", "A medida"],
+    cta: "Solicitar conferencia",
   },
 ];
 
@@ -123,7 +127,7 @@ export function Workshops() {
                   className={`group relative flex flex-col overflow-hidden rounded-2xl border ${accentBorder[w.accent]} bg-cream-light/70 p-6 transition-all hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-30px_rgba(17,17,17,0.35)]`}
                 >
                   {/* Hand-drawn motif accent — top-right corner */}
-                  <div className="absolute -right-3 -top-3 h-24 w-24 opacity-30 transition-opacity group-hover:opacity-60">
+                  <div className="absolute -right-3 -top-3 h-24 w-24 opacity-55 transition-opacity group-hover:opacity-80">
                     <Motif kind={w.motif} accent={w.accent} />
                   </div>
 
@@ -162,7 +166,7 @@ export function Workshops() {
                     href="#contacto"
                     className="mt-5 inline-flex items-center gap-1.5 text-[0.85rem] text-charcoal/75 transition-colors hover:text-terracotta"
                   >
-                    Consultar disponibilidad
+                    {w.cta}
                     <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
                 </motion.article>
@@ -257,29 +261,52 @@ function Motif({
       </svg>
     );
   }
-  // mic
+  // mic — organic pill body, wavy single grille stroke
   return (
     <svg viewBox="0 0 100 100" className="h-full w-full" fill="none">
-      <rect
-        x="40"
-        y="14"
-        width="20"
-        height="40"
-        rx="10"
+      {/* Mic body — two stacked curves, organic pill (no rect rx) */}
+      <path
+        d="M 40 50 Q 38 18 50 14 Q 62 18 60 50 Q 58 54 50 54 Q 42 54 40 50 Z"
         stroke={color}
         strokeWidth="1.4"
+        strokeLinejoin="round"
+      />
+      {/* Grille — single wavy hand stroke */}
+      <path
+        d="M 44 30 Q 48 26 50 30 Q 52 34 56 30"
+        stroke={color}
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        fill="none"
       />
       <path
-        d="M 28 50 Q 28 70 50 70 Q 72 70 72 50"
+        d="M 44 40 Q 48 36 50 40 Q 52 44 56 40"
+        stroke={color}
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        fill="none"
+      />
+      {/* Stand */}
+      <path
+        d="M 28 52 Q 28 72 50 72 Q 72 72 72 52"
+        stroke={color}
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <path
+        d="M 50 72 L 50 86"
         stroke={color}
         strokeWidth="1.4"
         strokeLinecap="round"
       />
-      <line x1="50" y1="70" x2="50" y2="84" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
-      <line x1="38" y1="84" x2="62" y2="84" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
-      <path d="M44 26 Q 50 22 56 26" stroke={color} strokeWidth="1" strokeLinecap="round" />
-      <path d="M44 34 Q 50 30 56 34" stroke={color} strokeWidth="1" strokeLinecap="round" />
-      <path d="M44 42 Q 50 38 56 42" stroke={color} strokeWidth="1" strokeLinecap="round" />
+      <path
+        d="M 38 86 Q 50 90 62 86"
+        stroke={color}
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        fill="none"
+      />
     </svg>
   );
 }

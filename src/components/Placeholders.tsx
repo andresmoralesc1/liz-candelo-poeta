@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mic, Newspaper, Send, Sparkles } from "lucide-react";
+import { Hammer, Send, Sparkles } from "lucide-react";
 
 const easePacific = [0.16, 1, 0.3, 1] as const;
 
@@ -25,15 +25,6 @@ interface PlaceholderConfig {
 }
 
 const placeholders: PlaceholderConfig[] = [
-  {
-    id: "prensa",
-    number: "05",
-    icon: Newspaper,
-    title: "Prensa y galería",
-    description:
-      "Recortes, entrevistas, fotos de eventos y apariciones públicas. Sección próxima a poblarse con el archivo de la autora.",
-    accent: "terracotta",
-  },
   {
     id: "contacto",
     number: "06",
@@ -86,7 +77,7 @@ export function Placeholders() {
           crítico lo aprueba. ¿Quieres que arranque uno?
         </motion.p>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
+        <div className="mt-10 grid gap-5 md:grid-cols-1">
           {placeholders.map((p) => {
             const Icon = p.icon;
             return (
@@ -100,7 +91,7 @@ export function Placeholders() {
                   <span
                     className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[0.7rem] ${accentChip[p.accent]}`}
                   >
-                    <Mic className="h-3 w-3" />
+                    <Hammer className="h-3 w-3" />
                     En construcción
                   </span>
                   <span className="font-display text-[1.5rem] text-charcoal/25">
