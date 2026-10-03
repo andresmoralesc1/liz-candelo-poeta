@@ -104,13 +104,13 @@ export function Hero() {
         </motion.div>
 
         {/* Center: photo with sun circle behind */}
-        <div className="relative order-1 flex h-[420px] items-center justify-center md:order-2 md:col-span-6 md:h-[560px] lg:h-[640px]">
+        <div className="relative order-1 flex h-[420px] items-center justify-center md:order-2 md:col-span-6 md:h-[560px] lg:h-[600px]">
           {/* Pacific Sun yellow disc behind the photo */}
           <motion.div
             initial={{ scale: 0.78, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.9, ease: easeOut, delay: 0.15 }}
-            className="absolute z-0 h-[320px] w-[320px] rounded-full bg-pacific-sun md:h-[440px] md:w-[440px] lg:h-[520px] lg:w-[520px]"
+            className="absolute z-0 h-[320px] w-[320px] rounded-full bg-pacific-sun md:h-[460px] md:w-[460px] lg:h-[600px] lg:w-[600px]"
             aria-hidden
           />
 
@@ -119,7 +119,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: easeOut, delay: 0.35 }}
-            className="relative z-10 h-full w-auto"
+            className="relative z-10 h-full w-auto max-w-full"
           >
             <Image
               src="/portrait/liz-candelo.jpg"
@@ -128,12 +128,12 @@ export function Hero() {
               height={1050}
               priority
               quality={88}
-              className="h-full w-auto select-none object-cover"
+              className="h-full max-w-full select-none object-cover"
               style={{
                 maskImage:
-                  "radial-gradient(ellipse 90% 88% at 50% 45%, #000 70%, transparent 100%)",
+                  "radial-gradient(ellipse 70% 75% at 50% 45%, #000 55%, transparent 100%)",
                 WebkitMaskImage:
-                  "radial-gradient(ellipse 90% 88% at 50% 45%, #000 70%, transparent 100%)",
+                  "radial-gradient(ellipse 70% 75% at 50% 45%, #000 55%, transparent 100%)",
               }}
             />
           </motion.div>
