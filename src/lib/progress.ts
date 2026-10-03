@@ -42,8 +42,8 @@ export const build: BuildItem[] = [
     title: "Hero con motifs del Pacífico",
     spec: "Headline editorial animado, sol SVG, olas, mariposas flotando, costa estilizada. Stagger Framer Motion.",
     status: "shipped",
-    verdict: "needs-polish",
-    note: "Primer crítico rechazó MVP: nav apuntaba a secciones inexistentes y el libro no aparecía en la página. Obra y Recorrido añadidos para cerrar el gap.",
+    verdict: "accepted",
+    note: "3 rondas de crítico. Ronda 1: rechazado (nav mentía, libro invisible). Ronda 2: gap-1 cerrado, nueva gap en la cubierta. Ronda 3: ACCEPTED. Pulido de contraste aplicado.",
     lastUpdated: "2026-10-03",
   },
   {
