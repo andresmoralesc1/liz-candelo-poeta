@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BookOpenCheck, Mic, Newspaper, Send, Sparkles } from "lucide-react";
+import { Mic, Newspaper, Send, Sparkles } from "lucide-react";
 
 const easePacific = [0.16, 1, 0.3, 1] as const;
 
@@ -26,17 +26,8 @@ interface PlaceholderConfig {
 
 const placeholders: PlaceholderConfig[] = [
   {
-    id: "talleres",
-    number: "03",
-    icon: BookOpenCheck,
-    title: "Talleres y mediación",
-    description:
-      "Mediación de lectura, talleres de literatura étnica, conferencias. Un portafolio de servicios en construcción que se alimenta del trabajo vivo con comunidades.",
-    accent: "sun",
-  },
-  {
     id: "prensa",
-    number: "04",
+    number: "05",
     icon: Newspaper,
     title: "Prensa y galería",
     description:
@@ -45,7 +36,7 @@ const placeholders: PlaceholderConfig[] = [
   },
   {
     id: "contacto",
-    number: "05",
+    number: "06",
     icon: Send,
     title: "Contacto",
     description:
@@ -95,7 +86,7 @@ export function Placeholders() {
           crítico lo aprueba. ¿Quieres que arranque uno?
         </motion.p>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
           {placeholders.map((p) => {
             const Icon = p.icon;
             return (

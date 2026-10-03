@@ -68,12 +68,12 @@ export const build: BuildItem[] = [
   },
   {
     id: "workshops",
-    section: "06 — Talleres",
+    section: "04 — Talleres",
     title: "Workshops, pedagogy & cultural services",
-    spec: "Cards de mediación de lectura, talleres de literatura étnica, conferencias.",
-    status: "pending",
+    spec: "Cards de mediación de lectura, talleres de literatura étnica, conferencias. Cierre con CTA «Escríbeme» a #contacto.",
+    status: "in-progress",
     verdict: "—",
-    note: "Stub honesto publicado para no mentirle al nav. Sesión dedicada: 06.",
+    note: "Sesión actual. 3 cards con hand-drawn motifs (book / people / mic) y CTA strip oscuro al final.",
     lastUpdated: "2026-10-03",
   },
   {
