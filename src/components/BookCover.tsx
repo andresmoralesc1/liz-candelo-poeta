@@ -1,5 +1,6 @@
 // SVG book cover for "La casa más grande del mundo".
-// Hand-drawn Pacific children's-book aesthetic. No external image asset.
+// Hand-drawn Pacific children's-book aesthetic.
+// v2: title in clean sky, half-sun on horizon, big house as centerpiece.
 
 export function BookCover({ className = "" }: { className?: string }) {
   return (
@@ -15,26 +16,26 @@ export function BookCover({ className = "" }: { className?: string }) {
           <circle cx="4" cy="3.5" r="0.3" fill="#111111" opacity="0.05" />
         </pattern>
         <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#F4C968" />
-          <stop offset="55%" stopColor="#ECA81D" />
-          <stop offset="100%" stopColor="#DF5A2B" />
+          <stop offset="0%" stopColor="#FBF8F1" />
+          <stop offset="35%" stopColor="#F4C968" />
+          <stop offset="100%" stopColor="#ECA81D" />
         </linearGradient>
-        <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" />
-          <feDisplacementMap in="SourceGraphic" scale="1.2" />
-        </filter>
+        <linearGradient id="house-warm" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#FBF8F1" />
+          <stop offset="100%" stopColor="#F4D8B0" />
+        </linearGradient>
       </defs>
 
-      {/* Cover background — sky gradient */}
+      {/* Sky background */}
       <rect width="400" height="600" fill="url(#sky)" />
       <rect width="400" height="600" fill="url(#paper)" />
 
       {/* Top publisher mark */}
       <g>
-        <line x1="40" y1="40" x2="80" y2="40" stroke="#111111" strokeWidth="1.4" strokeLinecap="round" />
+        <line x1="40" y1="38" x2="80" y2="38" stroke="#111111" strokeWidth="1.4" strokeLinecap="round" />
         <text
           x="200"
-          y="55"
+          y="52"
           textAnchor="middle"
           fontFamily="ui-sans-serif, system-ui"
           fontSize="11"
@@ -44,100 +45,133 @@ export function BookCover({ className = "" }: { className?: string }) {
         >
           ICONO EDITORIAL
         </text>
-        <line x1="320" y1="40" x2="360" y2="40" stroke="#111111" strokeWidth="1.4" strokeLinecap="round" />
+        <line x1="320" y1="38" x2="360" y2="38" stroke="#111111" strokeWidth="1.4" strokeLinecap="round" />
       </g>
 
-      {/* Sun on the horizon */}
-      <g>
-        <circle cx="200" cy="270" r="62" fill="#FBF8F1" opacity="0.95" />
-        <circle cx="200" cy="270" r="62" fill="none" stroke="#111111" strokeWidth="1.6" />
-        {Array.from({ length: 18 }).map((_, i) => {
-          const angle = (i * 360) / 18;
-          const r1 = 70;
-          const r2 = 96;
-          const rad = (angle * Math.PI) / 180;
-          const x1 = 200 + Math.cos(rad) * r1;
-          const y1 = 270 + Math.sin(rad) * r1;
-          const x2 = 200 + Math.cos(rad) * r2;
-          const y2 = 270 + Math.sin(rad) * r2;
-          return (
-            <line
-              key={i}
-              x1={x1.toFixed(1)}
-              y1={y1.toFixed(1)}
-              x2={x2.toFixed(1)}
-              y2={y2.toFixed(1)}
-              stroke="#111111"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-              opacity={i % 2 === 0 ? 0.9 : 0.5}
-            />
-          );
-        })}
+      {/* Title — clean sky area, with paint-order stroke for legibility */}
+      <g
+        style={{
+          paintOrder: "stroke fill",
+          WebkitTextStroke: "3px #F4C968",
+          stroke: "#F4C968",
+        }}
+      >
+        <text
+          x="200"
+          y="130"
+          textAnchor="middle"
+          fontFamily="Georgia, serif"
+          fontSize="40"
+          fontStyle="italic"
+          fill="#111111"
+        >
+          La casa
+        </text>
+        <text
+          x="200"
+          y="178"
+          textAnchor="middle"
+          fontFamily="Georgia, serif"
+          fontSize="40"
+          fontStyle="italic"
+          fill="#111111"
+        >
+          más grande
+        </text>
+        <text
+          x="200"
+          y="226"
+          textAnchor="middle"
+          fontFamily="Georgia, serif"
+          fontSize="40"
+          fontStyle="italic"
+          fill="#111111"
+        >
+          del mundo
+        </text>
       </g>
 
-      {/* Sea / horizon */}
+      {/* Sea — calm band */}
       <path
-        d="M0 360 Q 100 350 200 358 T 400 360 L 400 600 L 0 600 Z"
-        fill="#B8321B"
+        d="M0 420 Q 100 412 200 418 T 400 420 L 400 600 L 0 600 Z"
+        fill="#DF5A2B"
         opacity="0.92"
       />
       <path
-        d="M0 360 Q 100 350 200 358 T 400 360"
+        d="M0 420 Q 100 412 200 418 T 400 420"
         fill="none"
         stroke="#111111"
         strokeWidth="1.4"
         strokeLinecap="round"
       />
 
-      {/* Wave details */}
+      {/* Wave details on the sea */}
       <g stroke="#FBF8F1" strokeWidth="1.4" fill="none" strokeLinecap="round" opacity="0.7">
-        <path d="M30 400 Q 70 390 110 400 T 190 400 T 270 400 T 350 400" />
-        <path d="M50 430 Q 90 422 130 430 T 210 430 T 290 430 T 370 430" opacity="0.5" />
-        <path d="M20 460 Q 60 452 100 460 T 180 460 T 260 460 T 340 460" opacity="0.35" />
+        <path d="M30 470 Q 70 462 110 470 T 190 470 T 270 470 T 350 470" />
+        <path d="M50 500 Q 90 492 130 500 T 210 500 T 290 500 T 370 500" opacity="0.5" />
+        <path d="M20 530 Q 60 522 100 530 T 180 530 T 260 530 T 340 530" opacity="0.35" />
+        <path d="M40 560 Q 80 552 120 560 T 200 560 T 280 560 T 360 560" opacity="0.45" />
       </g>
 
-      {/* The big house — symbol of "la casa más grande" */}
-      <g transform="translate(140 380)">
-        {/* Body */}
+      {/* Half-sun rising from the horizon — small, behind the house */}
+      <g>
         <path
-          d="M 0 60 L 0 110 L 120 110 L 120 60 L 60 0 Z"
+          d="M 168 420 A 32 32 0 0 1 232 420 Z"
           fill="#FBF8F1"
           stroke="#111111"
-          strokeWidth="2"
+          strokeWidth="1.4"
+        />
+        {/* Subtle sun rays — only above horizon, behind house */}
+        <g stroke="#B8321B" strokeWidth="1.3" fill="none" strokeLinecap="round" opacity="0.55">
+          <path d="M200 388 L 200 360" />
+          <path d="M180 392 L 170 372" />
+          <path d="M220 392 L 230 372" />
+        </g>
+      </g>
+
+      {/* The big house — main visual anchor, bigger than before */}
+      <g transform="translate(110 400)">
+        {/* Body */}
+        <path
+          d="M 0 80 L 0 150 L 180 150 L 180 80 L 90 0 Z"
+          fill="url(#house-warm)"
+          stroke="#111111"
+          strokeWidth="2.4"
           strokeLinejoin="round"
         />
         {/* Window */}
-        <rect x="44" y="74" width="32" height="28" fill="#ECA81D" stroke="#111111" strokeWidth="1.6" />
-        <line x1="60" y1="74" x2="60" y2="102" stroke="#111111" strokeWidth="1" />
-        <line x1="44" y1="88" x2="76" y2="88" stroke="#111111" strokeWidth="1" />
+        <rect x="62" y="100" width="46" height="38" fill="#ECA81D" stroke="#111111" strokeWidth="1.8" />
+        <line x1="85" y1="100" x2="85" y2="138" stroke="#111111" strokeWidth="1.2" />
+        <line x1="62" y1="119" x2="108" y2="119" stroke="#111111" strokeWidth="1.2" />
         {/* Door */}
         <path
-          d="M 14 110 L 14 84 L 30 72 L 30 110 Z"
+          d="M 20 150 L 20 116 L 42 100 L 42 150 Z"
           fill="#B8321B"
           stroke="#111111"
-          strokeWidth="1.6"
+          strokeWidth="1.8"
           strokeLinejoin="round"
         />
-        {/* Smoke from chimney */}
+        {/* Chimney smoke */}
         <path
-          d="M 96 30 Q 102 24 96 18 Q 90 12 96 6"
+          d="M 142 38 Q 150 30 142 22 Q 134 14 142 4"
           fill="none"
           stroke="#111111"
           strokeWidth="1.4"
           strokeLinecap="round"
         />
+        {/* Decorative motif on the gable — small window/eye */}
+        <circle cx="90" cy="36" r="6" fill="#ECA81D" stroke="#111111" strokeWidth="1.2" />
       </g>
 
-      {/* Palms on either side */}
+      {/* Palms — anchored to the sea, smaller, not crowding the house */}
       <g stroke="#111111" fill="none" strokeLinecap="round" strokeLinejoin="round">
-        <g transform="translate(60 420)">
+        <g transform="translate(50 460)">
           <path d="M0 80 L 4 30" strokeWidth="1.6" />
           <path d="M4 30 C -10 16 -22 14 -32 18" strokeWidth="1.4" />
           <path d="M4 30 C 18 18 30 18 38 24" strokeWidth="1.4" />
           <path d="M4 30 C -2 14 0 4 8 -2" strokeWidth="1.4" />
         </g>
-        <g transform="translate(330 420)">
+        <g transform="translate(330 460)">
           <path d="M0 80 L 4 30" strokeWidth="1.6" />
           <path d="M4 30 C -10 16 -22 14 -32 18" strokeWidth="1.4" />
           <path d="M4 30 C 18 18 30 18 38 24" strokeWidth="1.4" />
@@ -145,44 +179,13 @@ export function BookCover({ className = "" }: { className?: string }) {
         </g>
       </g>
 
-      {/* Title */}
-      <g>
-        <text
-          x="200"
-          y="170"
-          textAnchor="middle"
-          fontFamily="Georgia, serif"
-          fontSize="22"
-          fill="#111111"
-          fontStyle="italic"
-        >
-          La casa
-        </text>
-        <text
-          x="200"
-          y="200"
-          textAnchor="middle"
-          fontFamily="Georgia, serif"
-          fontSize="22"
-          fill="#111111"
-          fontStyle="italic"
-        >
-          más grande
-        </text>
-        <text
-          x="200"
-          y="230"
-          textAnchor="middle"
-          fontFamily="Georgia, serif"
-          fontSize="22"
-          fill="#111111"
-          fontStyle="italic"
-        >
-          del mundo
-        </text>
+      {/* Two small birds in the sky */}
+      <g stroke="#111111" fill="none" strokeWidth="1.2" strokeLinecap="round">
+        <path d="M70 110 Q 76 104 82 110 Q 88 104 94 110" />
+        <path d="M310 100 Q 316 94 322 100 Q 328 94 334 100" />
       </g>
 
-      {/* Author at the bottom */}
+      {/* Author at the bottom — on the sea for contrast */}
       <text
         x="200"
         y="540"
@@ -191,7 +194,7 @@ export function BookCover({ className = "" }: { className?: string }) {
         fontSize="13"
         letterSpacing="3"
         fill="#FBF8F1"
-        opacity="0.95"
+        opacity="0.98"
       >
         LIZ CANDELO GRUESO
       </text>
@@ -204,7 +207,7 @@ export function BookCover({ className = "" }: { className?: string }) {
         fontSize="9"
         letterSpacing="2.5"
         fill="#FBF8F1"
-        opacity="0.75"
+        opacity="0.8"
       >
         POEMARIO · 2024
       </text>
