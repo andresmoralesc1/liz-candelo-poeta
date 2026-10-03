@@ -125,7 +125,7 @@ export function Press() {
           <div className="mt-14">
             <motion.div
               variants={fadeUp}
-              className="mb-5 flex items-center justify-between text-[0.78rem] uppercase tracking-[0.2em] text-charcoal/55"
+              className="mb-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-[0.78rem] uppercase tracking-[0.2em] text-charcoal/55"
             >
               <span>Galería</span>
               <span>8 momentos · archivo en construcción</span>
@@ -146,16 +146,14 @@ export function Press() {
                     <PhotoMotif kind={p.motif} className="h-1/2 w-1/2" />
                   </div>
 
-                  {/* Tape-corner accent */}
-                  <div className="absolute left-3 top-3 h-5 w-5 -rotate-12 border-l-2 border-t-2 border-charcoal/15" />
-                  <div className="absolute bottom-3 right-3 h-5 w-5 rotate-12 border-b-2 border-r-2 border-charcoal/15" />
+                  {/* Pending badge — top-right, doesn't compete with caption */}
+                  <span className="absolute right-2 top-2 rounded-full bg-charcoal/80 px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.16em] text-cream/90">
+                    Pendiente
+                  </span>
 
-                  {/* Caption strip */}
-                  <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-charcoal/85 via-charcoal/55 to-transparent px-3 py-2.5 text-cream">
-                    <span className="text-[0.78rem]">{p.caption}</span>
-                    <span className="text-[0.65rem] uppercase tracking-[0.16em] text-cream/65">
-                      Pendiente
-                    </span>
+                  {/* Caption strip — single line, truncate-safe */}
+                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/85 via-charcoal/55 to-transparent px-3 py-2.5 text-cream">
+                    <span className="block truncate text-[0.78rem]">{p.caption}</span>
                   </figcaption>
                 </motion.figure>
               ))}
@@ -166,7 +164,7 @@ export function Press() {
           <div className="mt-16">
             <motion.div
               variants={fadeUp}
-              className="mb-5 flex items-center justify-between text-[0.78rem] uppercase tracking-[0.2em] text-charcoal/55"
+              className="mb-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-[0.78rem] uppercase tracking-[0.2em] text-charcoal/55"
             >
               <span>Prensa escrita, radio, TV y academia</span>
               <span>4 entradas</span>
