@@ -1,13 +1,10 @@
 import { NextResponse } from "next/server";
+import { sendMail, mailcowConfigured } from "@/lib/email";
 
-// Brevo transactional email — POST to https://api.brevo.com/v3/smtp/email
-// Env: BREVO_API_KEY required at runtime for live send.
-// Owner: lizcandelo@andresmorales.com.co (per spec).
+// Mailcow SMTP via nodemailer. Owner: lizcandelo@andresmorales.com.co
+// Env: MAILCOW_HOST, MAILCOW_PORT, MAILCOW_USER, MAILCOW_PASS, MAILCOW_FROM.
 
-const BREVO_URL = "https://api.brevo.com/v3/smtp/email";
 const OWNER_EMAIL = "lizcandelo@andresmorales.com.co";
-const FROM_EMAIL = "no-reply@lizcandelogrueso.com";
-const FROM_NAME = "Web de Liz Candelo Grueso";
 
 type ContactBody = {
   name?: string;
@@ -63,9 +60,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const apiKey = process.env.BREVO_API_KEY;
-  if (!apiKey) {
-    // Graceful fallback so the form never silently swallows messages.
+  if (!mailcowConfigured()) {
     return NextResponse.json(
       {
         error:
@@ -93,38 +88,19 @@ export async function POST(req: Request) {
     `${message}\n`;
 
   try {
-    const res = await fetch(BREVO_URL, {
-      method: "POST",
-      headers: {
-        "api-key": apiKey,
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        sender: { name: FROM_NAME, email: FROM_EMAIL },
-        to: [{ email: OWNER_EMAIL, name: "Liz Candelo Grueso" }],
-        replyTo: { email, name },
-        subject: `[Web] ${subjectLabel} — ${name}`,
-        htmlContent: html,
-        textContent: text,
-      }),
+    await sendMail({
+      to: { email: OWNER_EMAIL, name: "Liz Candelo Grueso" },
+      subject: `[Web] ${subjectLabel} — ${name}`,
+      html,
+      text,
+      replyTo: { email, name },
     });
-
-    if (!res.ok) {
-      const detail = await res.text().catch(() => "");
-      return NextResponse.json(
-        {
-          error: "No se pudo enviar el mensaje",
-          detail: detail.slice(0, 500),
-          fallback: "mailto:" + OWNER_EMAIL,
-        },
-        { status: 502 },
-      );
-    }
   } catch (err) {
+    const detail = err instanceof Error ? err.message : String(err);
     return NextResponse.json(
       {
-        error: "Error de red al enviar el mensaje",
+        error: "No se pudo enviar el mensaje",
+        detail: detail.slice(0, 300),
         fallback: "mailto:" + OWNER_EMAIL,
       },
       { status: 502 },
