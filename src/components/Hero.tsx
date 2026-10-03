@@ -156,9 +156,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: easePacific, delay: 0.55 }}
-          className="order-3 flex items-center justify-center text-center md:order-3 md:justify-start md:text-left lg:col-span-3 lg:justify-start lg:text-left"
+          className="order-3 flex items-center justify-center text-center md:order-3 md:justify-start md:text-left lg:col-span-3 lg:items-start lg:justify-start lg:pt-6 lg:text-left"
         >
-          <h1 className="font-display text-[3.4rem] leading-[0.92] tracking-tight text-charcoal sm:text-5xl md:text-6xl lg:text-[7.4rem]">
+          <h1 className="font-display text-[3.4rem] leading-[0.92] tracking-tight text-charcoal sm:text-5xl md:text-6xl lg:max-w-[280px] lg:text-[6.6rem]">
             Liz
             <br />
             <span className="italic text-terracotta">Candelo</span>
