@@ -34,3 +34,5 @@ next-env.d.ts
 
 # misc
 .graft/
+.ignore
+graft/

@@ -1,7 +1,5 @@
 // Build progress for the live /status page.
 // Each entry: id, title, status, spec, verdict, lastUpdated.
-// Status: "pending" | "in-progress" | "shipped" | "iterating".
-// Verdict is the most-recent harsh-critic note, or "—" when not yet reviewed.
 
 export type Status = "pending" | "in-progress" | "shipped" | "iterating";
 export type Verdict = "—" | "rejected" | "accepted" | "needs-polish";
@@ -23,9 +21,9 @@ export const build: BuildItem[] = [
     section: "01 — Foundations",
     title: "Design system & tokens",
     spec: "Tailwind v4 @theme inline con paleta Pacífico (ECA81D, DF5A2B, F6F2E8, 111), tipografía Fraunces + Plus Jakarta Sans, paper-grain SVG noise, motion easing Pacific.",
-    status: "in-progress",
+    status: "shipped",
     verdict: "—",
-    note: "Tokens escritos en globals.css. Pendiente validar contraste WCAG en terracotta sobre cream.",
+    note: "Tokens en globals.css. globals.css publicado.",
     lastUpdated: "2026-10-03",
   },
   {
@@ -33,39 +31,39 @@ export const build: BuildItem[] = [
     section: "02 — Chrome",
     title: "Navigation & mobile drawer",
     spec: "Header fijo con cambio de estado al hacer scroll, drawer móvil animado, monograma LC, CTA «Leer su obra».",
-    status: "in-progress",
+    status: "shipped",
     verdict: "—",
-    note: "Componente client-side con Framer Motion. Sin verdict aún.",
+    note: "Sticky header + drawer animado Framer Motion. Sin verdict aún.",
     lastUpdated: "2026-10-03",
   },
   {
     id: "hero",
     section: "03 — Hero",
     title: "Hero con motifs del Pacífico",
-    spec: "Headline editorial animado, sol SVG rotando, olas, mariposas flotando, costa estilizada. Stagger Framer Motion.",
-    status: "in-progress",
-    verdict: "—",
-    note: "Componente principal entregado. Pendiente review de mobile a 375px.",
+    spec: "Headline editorial animado, sol SVG, olas, mariposas flotando, costa estilizada. Stagger Framer Motion.",
+    status: "shipped",
+    verdict: "needs-polish",
+    note: "Primer crítico rechazó MVP: nav apuntaba a secciones inexistentes y el libro no aparecía en la página. Obra y Recorrido añadidos para cerrar el gap.",
     lastUpdated: "2026-10-03",
   },
   {
     id: "book-showcase",
     section: "04 — Obra",
     title: "Book showcase (La casa más grande del mundo)",
-    spec: "3D cover tilt, sinopsis, links de compra Icono, quote callouts.",
-    status: "pending",
+    spec: "Cubierta SVG hand-drawn (no imagen), título, editorial Icono, sinopsis, quote verificado del autor, CTAs de compra.",
+    status: "shipped",
     verdict: "—",
-    note: "Próxima sesión.",
+    note: "Sin fragmentos inventados del libro — sólo la frase verificada del autor. Fragmentos adicionales con la editorial.",
     lastUpdated: "2026-10-03",
   },
   {
     id: "roots",
     section: "05 — Recorrido",
     title: "Author's journey & roots",
-    spec: "Mapa estilizado: Viento Libre (Buenaventura) → San Antonio de los Caballeros (Florida).",
-    status: "pending",
+    spec: "Mapa SVG estilizado Pacífico↔Andes con Viento Libre (Buenaventura) y San Antonio de los Caballeros (Florida, Valle del Cauca). Narrativa por lugar.",
+    status: "shipped",
     verdict: "—",
-    note: "Próxima sesión.",
+    note: "Hand-drawn map: océano Pacífico al oeste, Cordillera Central al este, Río Cauca entre los dos puntos.",
     lastUpdated: "2026-10-03",
   },
   {
@@ -75,7 +73,7 @@ export const build: BuildItem[] = [
     spec: "Cards de mediación de lectura, talleres de literatura étnica, conferencias.",
     status: "pending",
     verdict: "—",
-    note: "Próxima sesión.",
+    note: "Stub honesto publicado para no mentirle al nav. Sesión dedicada: 06.",
     lastUpdated: "2026-10-03",
   },
   {
@@ -85,7 +83,7 @@ export const build: BuildItem[] = [
     spec: "Grid de fotos, recortes de prensa, clips de entrevistas.",
     status: "pending",
     verdict: "—",
-    note: "Próxima sesión.",
+    note: "Stub honesto. Sesión dedicada: 07.",
     lastUpdated: "2026-10-03",
   },
   {
@@ -95,17 +93,17 @@ export const build: BuildItem[] = [
     spec: "Form accesible, social links, integración email placeholder.",
     status: "pending",
     verdict: "—",
-    note: "Próxima sesión.",
+    note: "Stub honesto. Sesión dedicada: 08. Activará el deploy-hook de email a lizcandelo@andresmorales.com.co.",
     lastUpdated: "2026-10-03",
   },
   {
     id: "infra",
     section: "09 — Infra",
-    title: "Docker + Caddy + deploy notifications",
-    spec: "Dockerfile multi-stage, docker-compose, Caddyfile. Notificación de deploy a lizcandelo@andresmorales.com.co.",
+    title: "Email deploy notification + Vercel polish",
+    spec: "Brevo + Vercel Deploy Hook → /api/deploy-notify → email automático a lizcandelo@andresmorales.com.co en cada deploy.",
     status: "pending",
     verdict: "—",
-    note: "Próxima sesión — el user pidió staging en Vercel, no en self-host. Adaptar a Vercel preview.",
+    note: "Próxima sesión — user pidió staging en Vercel, no en self-host. Docker/Caddy omitido por alcance.",
     lastUpdated: "2026-10-03",
   },
 ];
@@ -117,4 +115,5 @@ export const buildSummary = {
   pending: build.filter((b) => b.status === "pending").length,
   accepted: build.filter((b) => b.verdict === "accepted").length,
   rejected: build.filter((b) => b.verdict === "rejected").length,
+  needsPolish: build.filter((b) => b.verdict === "needs-polish").length,
 };
