@@ -104,13 +104,13 @@ export function Hero() {
         </motion.div>
 
         {/* Center: photo with sun circle behind */}
-        <div className="relative order-1 flex h-[420px] items-center justify-center md:order-2 md:col-span-6 md:h-[560px] lg:h-[600px]">
-          {/* Pacific Sun yellow disc behind the photo */}
+        <div className="relative order-1 flex h-[420px] items-center justify-center overflow-hidden md:order-2 md:col-span-6 md:h-[560px] lg:h-[600px]">
+          {/* Pacific Sun yellow disc behind the photo — clamps to column */}
           <motion.div
             initial={{ scale: 0.78, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.9, ease: easeOut, delay: 0.15 }}
-            className="absolute z-0 h-[320px] w-[320px] rounded-full bg-pacific-sun md:h-[460px] md:w-[460px] lg:h-[600px] lg:w-[600px]"
+            className="absolute z-0 h-[280px] w-[280px] rounded-full bg-pacific-sun md:h-[300px] md:w-[300px] lg:h-[720px] lg:w-[720px]"
             aria-hidden
           />
 
