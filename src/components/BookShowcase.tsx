@@ -117,9 +117,24 @@ export function BookShowcase() {
               {/* Pulled quote — the only verified author line we have */}
               <motion.figure
                 variants={fadeUp}
-                className="relative rounded-2xl border-l-4 border-terracotta bg-cream-light/70 px-6 py-5"
+                className="relative overflow-hidden rounded-2xl bg-cream-light/70 py-6 pl-10 pr-6"
               >
-                <Feather className="absolute -top-3 left-4 h-5 w-5 text-terracotta" />
+                {/* Hand-drawn vertical accent — replaces the AI-tell straight border */}
+                <svg
+                  aria-hidden
+                  className="absolute left-3 top-4 bottom-4 w-2 text-terracotta"
+                  viewBox="0 0 8 100"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M4 2 Q 1 20 4 40 T 4 80 Q 6 92 4 98"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <Feather className="absolute -top-3 right-5 h-5 w-5 text-terracotta" />
                 <blockquote className="font-display text-[1.15rem] italic leading-snug text-charcoal md:text-[1.3rem]">
                   «El pueblo en que me crié es tan importante como el pueblo
                   en que nací; ambas tierras hicieron su aporte étnico y
