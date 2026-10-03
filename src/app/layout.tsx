@@ -40,12 +40,28 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_CO",
     siteName: "Liz Candelo Grueso",
+    images: [
+      {
+        url: "https://lizcandelo.andresmorales.com.co/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Liz Candelo Grueso — poeta, narradora e investigadora cultural del Pacífico colombiano",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Liz Candelo Grueso",
     description:
       "Poesía, narrativa e investigación cultural desde el Pacífico colombiano.",
+    images: [
+      {
+        url: "https://lizcandelo.andresmorales.com.co/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Liz Candelo Grueso — poeta, narradora e investigadora cultural del Pacífico colombiano",
+      },
+    ],
   },
   alternates: {
     canonical: "https://lizcandelo.andresmorales.com.co",
