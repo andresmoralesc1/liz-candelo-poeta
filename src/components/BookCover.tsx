@@ -194,11 +194,13 @@ export function BookCover({ className = "" }: { className?: string }) {
         fontSize="13"
         letterSpacing="3"
         fill="#FBF8F1"
-        opacity="0.98"
+        stroke="#111111"
+        strokeWidth="0.5"
+        style={{ paintOrder: "stroke fill" }}
       >
         LIZ CANDELO GRUESO
       </text>
-      <line x1="160" y1="555" x2="240" y2="555" stroke="#FBF8F1" strokeWidth="1" opacity="0.7" />
+      <line x1="160" y1="555" x2="240" y2="555" stroke="#FBF8F1" strokeWidth="1" opacity="0.9" />
       <text
         x="200"
         y="575"
@@ -207,7 +209,10 @@ export function BookCover({ className = "" }: { className?: string }) {
         fontSize="9"
         letterSpacing="2.5"
         fill="#FBF8F1"
-        opacity="0.8"
+        stroke="#111111"
+        strokeWidth="0.3"
+        style={{ paintOrder: "stroke fill" }}
+        opacity="0.9"
       >
         POEMARIO · 2024
       </text>

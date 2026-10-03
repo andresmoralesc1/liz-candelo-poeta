@@ -161,7 +161,7 @@ export function Hero() {
           className="max-w-2xl text-[1.05rem] leading-relaxed text-charcoal-soft md:text-[1.2rem]"
         >
           Liz Candelo Grueso escribe desde el Pacífico colombiano.
-          <span className="block mt-2 italic text-charcoal/70">
+          <span className="block mt-2 italic text-charcoal/85">
             «El pueblo en que me crié es tan importante como el pueblo en que
             nací; ambas tierras hicieron su aporte étnico y cultural en mis
             genes.»
