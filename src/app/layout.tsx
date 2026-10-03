@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     "Buenaventura",
     "Viento Libre",
     "literatura del Pacífico colombiano",
+    "Aquilino Grueso",
   ],
   openGraph: {
     title: "Liz Candelo Grueso",
@@ -38,10 +39,71 @@ export const metadata: Metadata = {
       "Poesía, narrativa e investigación cultural desde el Pacífico colombiano.",
     type: "website",
     locale: "es_CO",
+    siteName: "Liz Candelo Grueso",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Liz Candelo Grueso",
+    description:
+      "Poesía, narrativa e investigación cultural desde el Pacífico colombiano.",
   },
   alternates: {
     canonical: "https://lizcandelo.andresmorales.com.co",
   },
+};
+
+// JSON-LD structured data — Person + Book + WebSite.
+// Helps Google rich results (knowledge panel, book card, sitelinks).
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://lizcandelo.andresmorales.com.co/#person",
+      name: "Liz Candelo Grueso",
+      givenName: "Liz",
+      familyName: "Candelo Grueso",
+      jobTitle: ["Poeta", "Narradora", "Investigadora cultural"],
+      description:
+        "Poeta, narradora e investigadora cultural afrocolombiana, nieta de Aquilino Grueso. Nacida en Viento Libre (Buenaventura, Valle del Cauca) y criada en San Antonio de los Caballeros (Florida, Valle del Cauca).",
+      url: "https://lizcandelo.andresmorales.com.co",
+      image: "https://lizcandelo.andresmorales.com.co/portrait/liz-candelo.jpg",
+      birthPlace: {
+        "@type": "Place",
+        name: "Viento Libre, Buenaventura, Valle del Cauca, Colombia",
+      },
+      homeLocation: {
+        "@type": "Place",
+        name: "San Antonio de los Caballeros, Florida, Valle del Cauca, Colombia",
+      },
+      knowsAbout: [
+        "Poesía afrocolombiana",
+        "Literatura del Pacífico colombiano",
+        "Memoria étnica",
+        "Mediación de lectura",
+      ],
+      relatedTo: {
+        "@type": "Person",
+        name: "Aquilino Grueso",
+      },
+      workExample: {
+        "@type": "Book",
+        name: "La casa más grande del mundo",
+        author: { "@id": "https://lizcandelo.andresmorales.com.co/#person" },
+        publisher: { "@type": "Organization", name: "Icono Editorial" },
+        inLanguage: "es-CO",
+        genre: "Poesía",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://lizcandelo.andresmorales.com.co/#website",
+      url: "https://lizcandelo.andresmorales.com.co",
+      name: "Liz Candelo Grueso",
+      inLanguage: "es-CO",
+      publisher: { "@id": "https://lizcandelo.andresmorales.com.co/#person" },
+    },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -52,6 +114,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="paper-grain min-h-full flex flex-col bg-cream text-ink">
         {children}
+        <script
+          type="application/ld+json"
+          // Schema.org JSON-LD for Google rich results. See jsonLd above.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   );
