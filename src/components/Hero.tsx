@@ -73,7 +73,7 @@ export function Hero() {
         className="mx-auto flex max-w-7xl items-center gap-2 px-6 md:px-10"
       >
         <Sparkles className="h-3.5 w-3.5 text-terracotta" />
-        <span className="text-[0.78rem] uppercase tracking-[0.2em] text-charcoal/70">
+        <span className="text-[0.7rem] uppercase tracking-[0.2em] text-charcoal/70 sm:text-[0.78rem]">
           Nieta de Aquilino Grueso · Viento Libre, Buenaventura
         </span>
       </motion.div>
@@ -101,7 +101,7 @@ export function Hero() {
           </p>
           <a
             href="#obra"
-            className="mt-5 inline-flex items-center gap-1.5 text-[0.92rem] font-medium text-charcoal underline decoration-from-font underline-offset-4 transition-colors hover:text-terracotta"
+            className="mt-5 inline-flex min-h-[44px] items-center gap-1.5 self-start rounded-full px-4 py-2.5 text-[0.92rem] font-medium text-charcoal underline decoration-from-font underline-offset-4 transition-colors hover:text-terracotta md:self-auto"
           >
             Conocer su obra
             <ArrowDown className="h-3.5 w-3.5" />
@@ -143,12 +143,12 @@ export function Hero() {
             />
           </motion.div>
 
-          {/* Tiny caption under the photo */}
+          {/* Tiny caption under the photo — z-20 so it paints above the photo */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 1.1 }}
-            className="absolute -bottom-2 right-2 text-right md:right-4 lg:right-8"
+            className="absolute bottom-2 right-2 z-20 text-right md:right-4 lg:right-8"
           >
             <span className="text-[0.7rem] uppercase tracking-[0.22em] text-charcoal/45">
               Fotografía · 2019
@@ -181,7 +181,7 @@ export function Hero() {
         </nav>
         <a
           href="#contacto"
-          className="rounded-full border border-charcoal/20 px-4 py-1.5 transition-colors hover:border-terracotta hover:text-terracotta"
+          className="inline-flex min-h-[44px] items-center rounded-full border border-charcoal/20 px-4 py-2.5 transition-colors hover:border-terracotta hover:text-terracotta"
         >
           Escríbeme →
         </a>
