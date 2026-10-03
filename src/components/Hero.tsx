@@ -6,7 +6,6 @@ import { ArrowDown, MapPin, Sparkles } from "lucide-react";
 import { PacificSun, Butterfly, BreezeLine, SparkleDots } from "./PacificMotifs";
 
 const easePacific = [0.16, 1, 0.3, 1] as const;
-
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 const navLinks = [
@@ -22,7 +21,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative isolate min-h-[100svh] overflow-hidden bg-cream pt-24 pb-12 md:pt-28 md:pb-16 lg:pb-20"
+      className="relative isolate overflow-hidden bg-cream pt-24 pb-12 md:pt-28 md:pb-16 lg:pb-24"
     >
       {/* Subtle hand-drawn accents in the background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -57,7 +56,7 @@ export function Hero() {
 
         <motion.div
           aria-hidden
-          className="absolute -right-16 -top-16 h-72 w-72 text-pacific-sun/25 md:h-96 md:w-96"
+          className="absolute -right-16 -top-16 h-72 w-72 text-pacific-sun/20 md:h-96 md:w-96"
           initial={{ opacity: 0, rotate: -10 }}
           animate={{ opacity: 1, rotate: 0 }}
           transition={{ duration: 1.4, ease: easePacific }}
@@ -79,16 +78,22 @@ export function Hero() {
         </span>
       </motion.div>
 
-      {/* Main editorial layout — 1 col on mobile/tablet, 3 cols on lg+ */}
-      <div className="mx-auto mt-10 grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 md:mt-12 md:px-10 lg:grid-cols-12 lg:gap-10">
-        {/* Left: small bio line + Read More */}
+      {/* Main layout — 1 col on mobile/tablet, photo RIGHT (col-span-6) on lg+ */}
+      <div className="mx-auto mt-10 grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 md:mt-12 md:gap-14 md:px-10 lg:grid-cols-12 lg:gap-10">
+        {/* Left: name + bio */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: easePacific, delay: 0.4 }}
-          className="order-2 text-center md:order-1 md:text-left lg:col-span-3 lg:text-left"
+          className="order-2 text-center md:order-1 md:text-left lg:col-span-6 lg:order-1 lg:text-left"
         >
-          <p className="mx-auto max-w-xs text-[0.95rem] leading-relaxed text-charcoal/80 md:mx-0">
+          <h1 className="font-display text-[3.4rem] leading-[0.92] tracking-tight text-charcoal sm:text-5xl md:text-6xl lg:max-w-[520px] lg:text-[6.6rem]">
+            Liz
+            <br />
+            <span className="italic text-terracotta">Candelo</span>
+          </h1>
+
+          <p className="mx-auto mt-8 max-w-md text-[0.98rem] leading-relaxed text-charcoal/80 md:mx-0 md:mt-10 md:text-[1.05rem]">
             Poeta, narradora e investigadora cultural del Pacífico
             colombiano. Su libro inaugural —{" "}
             <span className="italic text-terracotta">La casa más grande del mundo</span>{" "}
@@ -96,74 +101,60 @@ export function Hero() {
           </p>
           <a
             href="#obra"
-            className="mt-4 inline-flex items-center gap-1.5 text-[0.92rem] font-medium text-charcoal underline decoration-from-font underline-offset-4 transition-colors hover:text-terracotta"
+            className="mt-5 inline-flex items-center gap-1.5 text-[0.92rem] font-medium text-charcoal underline decoration-from-font underline-offset-4 transition-colors hover:text-terracotta"
           >
             Conocer su obra
             <ArrowDown className="h-3.5 w-3.5" />
           </a>
         </motion.div>
 
-        {/* Center: photo with sun circle behind */}
-        <div className="relative order-1 flex h-[420px] items-center justify-center overflow-hidden md:order-2 md:h-[560px] lg:col-span-6 lg:h-[600px]">
-          {/* Pacific Sun yellow disc behind the photo — scales with breakpoint */}
+        {/* Right: photo with sun disc halo behind — no mask, full photo visible */}
+        <div className="relative order-1 flex items-center justify-center md:order-2 lg:col-span-6 lg:order-2">
+          {/* Sun disc — slightly larger than the photo, peeks around as a halo */}
           <motion.div
-            initial={{ scale: 0.78, opacity: 0 }}
+            aria-hidden
+            initial={{ scale: 0.85, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.9, ease: easeOut, delay: 0.15 }}
-            className="absolute z-0 h-[280px] w-[280px] rounded-full bg-pacific-sun md:h-[320px] md:w-[320px] lg:h-[720px] lg:w-[720px]"
-            aria-hidden
+            className="absolute z-0 h-[320px] w-[320px] rounded-full bg-pacific-sun md:h-[420px] md:w-[420px] lg:h-[560px] lg:w-[560px]"
+            style={{
+              right: "5%",
+              top: "50%",
+              transform: "translateY(-50%)",
+            }}
           />
 
-          {/* Photo — hand-drawn-feel portrait, lifted over the sun */}
+          {/* Full photo, no mask, aspect 2:3 portrait */}
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: easeOut, delay: 0.35 }}
-            className="relative z-10 h-full w-auto max-w-full"
+            className="relative z-10 w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] lg:max-w-[480px]"
           >
             <Image
               src="/portrait/liz-candelo.jpg"
               alt="Retrato de Liz Candelo Grueso"
-              width={700}
-              height={1050}
+              width={1068}
+              height={1600}
               priority
-              quality={88}
-              className="h-full max-w-full select-none object-cover"
-              style={{
-                maskImage:
-                  "radial-gradient(ellipse 70% 75% at 50% 45%, #000 55%, transparent 100%)",
-                WebkitMaskImage:
-                  "radial-gradient(ellipse 70% 75% at 50% 45%, #000 55%, transparent 100%)",
-              }}
+              quality={90}
+              className="h-auto w-full select-none rounded-sm object-cover shadow-[0_30px_80px_-20px_rgba(17,17,17,0.25)]"
+              style={{ aspectRatio: "1068/1600" }}
             />
           </motion.div>
 
-          {/* A small caption under the photo, hand-drawn-feel */}
+          {/* Tiny caption under the photo */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 1.1 }}
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 text-center md:bottom-2"
+            className="absolute -bottom-2 right-2 text-right md:right-4 lg:right-8"
           >
             <span className="text-[0.7rem] uppercase tracking-[0.22em] text-charcoal/45">
               Fotografía · 2019
             </span>
           </motion.div>
         </div>
-
-        {/* Right: big editorial name */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: easePacific, delay: 0.55 }}
-          className="order-3 flex items-center justify-center text-center md:order-3 md:justify-start md:text-left lg:col-span-3 lg:items-start lg:justify-start lg:pt-6 lg:text-left"
-        >
-          <h1 className="font-display text-[3.4rem] leading-[0.92] tracking-tight text-charcoal sm:text-5xl md:text-6xl lg:max-w-[280px] lg:text-[6.6rem]">
-            Liz
-            <br />
-            <span className="italic text-terracotta">Candelo</span>
-          </h1>
-        </motion.div>
       </div>
 
       {/* Bottom strip — location + small navigation echo */}
