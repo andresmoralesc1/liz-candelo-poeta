@@ -151,7 +151,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status.kind === "sending"}
-          className="group inline-flex items-center justify-center gap-2 rounded-full bg-charcoal px-6 py-3 text-[0.95rem] text-cream transition-all hover:bg-terracotta disabled:opacity-60"
+          className="press-scale group inline-flex items-center justify-center gap-2 rounded-full bg-charcoal px-6 py-3 text-[0.95rem] text-cream transition-all hover:bg-terracotta disabled:opacity-60"
         >
           {status.kind === "sending" ? (
             <>
@@ -160,7 +160,7 @@ export function ContactForm() {
             </>
           ) : (
             <>
-              <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              <Send className="icon-nudge h-4 w-4" />
               Enviar mensaje
             </>
           )}

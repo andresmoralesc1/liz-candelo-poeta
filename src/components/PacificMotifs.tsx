@@ -15,7 +15,8 @@ export function PacificSun({ className = "" }: { className?: string }) {
     >
       <circle cx="100" cy="100" r="42" />
       <circle cx="100" cy="100" r="36" opacity="0.5" />
-      {/* Rays — hand-drawn imperfect */}
+      {/* Rays — hand-drawn imperfect. Each ray draws on mount via
+          stroke-dasharray + CSS @keyframes draw (defined in globals.css). */}
       {Array.from({ length: 16 }).map((_, i) => {
         const angle = (i * 360) / 16;
         const r1 = 52;
@@ -33,6 +34,12 @@ export function PacificSun({ className = "" }: { className?: string }) {
             x2={x2.toFixed(1)}
             y2={y2.toFixed(1)}
             opacity={i % 2 === 0 ? 0.85 : 0.45}
+            pathLength="100"
+            strokeDasharray="100"
+            strokeDashoffset="100"
+            style={{
+              animation: `draw 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${0.05 * i}s forwards`,
+            }}
           />
         );
       })}

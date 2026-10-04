@@ -110,3 +110,103 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Micro-interactions — applied sitewide
+   ───────────────────────────────────────────────────────────── */
+
+/* Animated underline that wipes left-to-right on hover. Use on any
+   text link. Combine with the .text-charcoal/70..85 family. */
+.animated-underline {
+  position: relative;
+  background-image: linear-gradient(
+    var(--color-terracotta),
+    var(--color-terracotta)
+  );
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.5s var(--ease-pacific);
+}
+.animated-underline:hover,
+.animated-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Hover-lift card — subtle -2px lift + soft shadow over 350ms.
+   Apply on any .card wrapper. */
+.card-lift {
+  transition: transform 0.35s var(--ease-pacific),
+    box-shadow 0.35s var(--ease-pacific);
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px -22px rgba(17, 17, 17, 0.25);
+}
+
+/* Press-scale on click — soft 0.97 for tactile feedback. */
+.press-scale {
+  transition: transform 0.15s var(--ease-pacific);
+}
+.press-scale:active {
+  transform: scale(0.97);
+}
+
+/* Icon nudge on parent hover — for the right-arrow icons in CTAs
+   that should slide 2px right when the link is hovered. */
+.icon-nudge svg {
+  transition: transform 0.35s var(--ease-pacific);
+}
+.group:hover .icon-nudge svg,
+.icon-nudge:hover svg {
+  transform: translateX(2px);
+}
+
+/* Photo tilt-on-hover — subtle 1deg rotate + 1.01 scale. */
+.photo-tilt {
+  transition: transform 0.6s var(--ease-pacific);
+  will-change: transform;
+}
+.photo-tilt:hover {
+  transform: scale(1.015) rotate(-0.4deg);
+}
+
+/* Map marker hover — used on the Recorrido map pins. */
+.marker-pulse {
+  transition: transform 0.4s var(--ease-pacific);
+}
+.marker-pulse:hover {
+  transform: scale(1.15);
+}
+
+/* Caret blink for inputs — uses Pacific Sun color. */
+@keyframes caret-blink {
+  0%, 50% { caret-color: var(--color-terracotta); }
+  51%, 100% { caret-color: transparent; }
+}
+input:focus,
+textarea:focus,
+select:focus {
+  caret-color: var(--color-terracotta);
+  animation: caret-blink 1.1s steps(2) infinite;
+}
+
+/* Subtle SVG line draw — used on Pacific Sun rays and any path reveal.
+   Apply with: animation: draw 1.4s var(--ease-pacific) forwards; */
+@keyframes draw {
+  from { stroke-dashoffset: 100%; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Number count-up shimmer — used on /status stats. The actual
+   count is driven by JS (see CountUp component); this is a soft
+   glow for the moment the value lands. */
+@keyframes stat-pop {
+  0% { transform: scale(0.9); opacity: 0.4; }
+  60% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.stat-pop {
+  animation: stat-pop 0.7s var(--ease-pacific) both;
+  transform-origin: left center;
+}

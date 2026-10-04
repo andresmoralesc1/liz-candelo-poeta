@@ -57,7 +57,7 @@ export function Roots() {
             {/* Hand-drawn map */}
             <motion.div
               variants={fadeUp}
-              className="relative rounded-3xl border border-charcoal/8 bg-cream-light/60 p-4 md:p-6"
+              className="card-lift relative rounded-3xl border border-charcoal/8 bg-cream-light/60 p-4 md:p-6"
             >
               <RootsMap />
               <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-[0.7rem] uppercase tracking-[0.2em] text-charcoal/45">
@@ -252,7 +252,7 @@ function RootsMap() {
       </g>
 
       {/* Marker 1: Viento Libre (Pacific coast) */}
-      <g transform="translate(120 250)">
+      <g transform="translate(120 250)" className="marker-pulse" style={{ cursor: "pointer" }}>
         <circle r="6" fill="#ECA81D" stroke="#111111" strokeWidth="1.6" />
         <circle r="14" fill="none" stroke="#ECA81D" strokeWidth="1" opacity="0.5" />
         <text
@@ -280,7 +280,7 @@ function RootsMap() {
       </g>
 
       {/* Marker 2: San Antonio de los Caballeros (Andes) */}
-      <g transform="translate(380 170)">
+      <g transform="translate(380 170)" className="marker-pulse" style={{ cursor: "pointer" }}>
         <circle r="6" fill="#DF5A2B" stroke="#111111" strokeWidth="1.6" />
         <circle r="14" fill="none" stroke="#DF5A2B" strokeWidth="1" opacity="0.5" />
         <text

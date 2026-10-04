@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { build, buildSummary } from "@/lib/progress";
+import { CountUp } from "@/components/CountUp";
 import { CheckCircle2, Circle, Hammer, RefreshCw, Sparkle } from "lucide-react";
 
 const statusMeta: Record<
@@ -142,9 +143,9 @@ function SummaryStat({
       ? "text-terracotta"
       : "text-charcoal";
   return (
-    <div className="rounded-2xl border border-charcoal/8 bg-cream-light/70 p-4">
+    <div className="card-lift rounded-2xl border border-charcoal/8 bg-cream-light/70 p-4">
       <div className={`font-display text-[2.2rem] leading-none ${color}`}>
-        {value}
+        <CountUp value={value} />
       </div>
       <div className="mt-1 text-[0.72rem] uppercase tracking-[0.18em] text-charcoal/55">
         {label}

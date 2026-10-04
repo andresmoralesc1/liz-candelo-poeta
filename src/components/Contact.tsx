@@ -82,9 +82,9 @@ export function Contact() {
                 </div>
                 <a
                   href={`mailto:${ownerEmail}`}
-                  className="mt-2 inline-flex items-center gap-2 font-display text-[1.15rem] text-charcoal transition-colors hover:text-terracotta"
+                  className="press-scale mt-2 inline-flex items-center gap-2 font-display text-[1.15rem] text-charcoal transition-colors hover:text-terracotta"
                 >
-                  <Mail className="h-4 w-4" />
+                  <Mail className="icon-nudge h-4 w-4" />
                   {ownerEmail}
                 </a>
               </div>
@@ -109,7 +109,7 @@ export function Contact() {
                     return (
                       <li
                         key={s.label}
-                        className="flex min-h-[44px] items-center gap-3 rounded-xl border border-charcoal/8 bg-cream/60 px-3 py-2.5"
+                        className="card-lift flex min-h-[44px] items-center gap-3 rounded-xl border border-charcoal/8 bg-cream/60 px-3 py-2.5"
                       >
                         <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-charcoal/12 text-charcoal/65">
                           <Icon className="h-3.5 w-3.5" />

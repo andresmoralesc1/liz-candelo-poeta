@@ -77,7 +77,7 @@ export function BookShowcase() {
             {/* Left: SVG book cover (no fabricated image) */}
             <motion.div
               variants={fadeUp}
-              className="relative mx-auto w-full max-w-sm lg:mx-0"
+              className="photo-tilt relative mx-auto w-full max-w-sm lg:mx-0"
             >
               <div className="relative">
                 <BookCover className="w-full drop-shadow-[0_30px_50px_rgba(17,17,17,0.18)]" />
@@ -158,14 +158,14 @@ export function BookShowcase() {
                   href="https://www.iconoeditorial.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 rounded-full bg-charcoal px-5 py-3 text-[0.92rem] text-cream transition-all hover:bg-terracotta"
+                  className="press-scale group inline-flex items-center gap-2 rounded-full bg-charcoal px-5 py-3 text-[0.92rem] text-cream transition-all hover:bg-terracotta"
                 >
-                  <ShoppingBag className="h-4 w-4" />
+                  <ShoppingBag className="icon-nudge h-4 w-4" />
                   Comprar en Icono
                 </a>
                 <a
                   href="#contacto"
-                  className="inline-flex items-center gap-2 rounded-full border border-charcoal/20 bg-cream-light/60 px-5 py-3 text-[0.92rem] text-charcoal transition-all hover:border-terracotta hover:text-terracotta"
+                  className="press-scale inline-flex items-center gap-2 rounded-full border border-charcoal/20 bg-cream-light/60 px-5 py-3 text-[0.92rem] text-charcoal transition-all hover:border-terracotta hover:text-terracotta"
                 >
                   Solicitar lectura
                 </a>

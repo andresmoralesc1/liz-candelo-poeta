@@ -138,7 +138,7 @@ export function Press() {
                 <motion.figure
                   key={i}
                   variants={fadeIn}
-                  className="group relative aspect-[3/4] overflow-hidden rounded-2xl border border-charcoal/8 bg-cream-light/70"
+                  className="group card-lift relative aspect-[3/4] overflow-hidden rounded-2xl border border-charcoal/8 bg-cream-light/70"
                 >
                   {/* Hand-drawn motif */}
                   <div className="absolute inset-0 flex items-center justify-center text-charcoal/35 transition-colors group-hover:text-charcoal/60">
@@ -206,7 +206,7 @@ export function Press() {
                     </div>
                     <ExternalLink
                       aria-hidden
-                      className="hidden h-4 w-4 flex-shrink-0 text-charcoal/30 transition-colors group-hover:text-terracotta md:block"
+                      className="icon-nudge hidden h-4 w-4 flex-shrink-0 text-charcoal/30 transition-colors group-hover:text-terracotta md:block"
                     />
                   </motion.li>
                 );

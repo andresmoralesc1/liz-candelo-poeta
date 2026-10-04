@@ -101,10 +101,10 @@ export function Hero() {
           </p>
           <a
             href="#obra"
-            className="mt-5 inline-flex min-h-[44px] items-center gap-1.5 self-start rounded-full px-4 py-2.5 text-[0.92rem] font-medium text-charcoal underline decoration-from-font underline-offset-4 transition-colors hover:text-terracotta md:self-auto"
+            className="press-scale mt-5 inline-flex min-h-[44px] items-center gap-1.5 self-start rounded-full px-4 py-2.5 text-[0.92rem] font-medium text-charcoal underline decoration-from-font underline-offset-4 transition-colors hover:text-terracotta md:self-auto"
           >
             Conocer su obra
-            <ArrowDown className="h-3.5 w-3.5" />
+            <ArrowDown className="icon-nudge h-3.5 w-3.5" />
           </a>
         </motion.div>
 
@@ -129,7 +129,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: easeOut, delay: 0.35 }}
-            className="relative z-10 w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] lg:max-w-[480px] lg:-translate-x-6"
+            className="photo-tilt relative z-10 w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] lg:max-w-[480px] lg:-translate-x-6"
           >
             <Image
               src="/portrait/liz-candelo.jpg"
@@ -181,7 +181,7 @@ export function Hero() {
         </nav>
         <a
           href="#contacto"
-          className="inline-flex min-h-[44px] items-center rounded-full border border-charcoal/20 px-4 py-2.5 transition-colors hover:border-terracotta hover:text-terracotta"
+          className="press-scale inline-flex min-h-[44px] items-center rounded-full border border-charcoal/20 px-4 py-2.5 transition-colors hover:border-terracotta hover:text-terracotta"
         >
           Escríbeme →
         </a>

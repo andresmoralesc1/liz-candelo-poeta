@@ -23,7 +23,7 @@ export default function Home() {
             <span>Pacífico colombiano · Valle del Cauca</span>
             <a
               href="/status"
-              className="transition-colors hover:text-terracotta"
+              className="animated-underline transition-colors hover:text-terracotta"
             >
               Estado de build →
             </a>

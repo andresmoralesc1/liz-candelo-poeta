@@ -124,7 +124,7 @@ export function Workshops() {
                 <motion.article
                   key={w.title}
                   variants={fadeUp}
-                  className={`group relative flex flex-col overflow-hidden rounded-2xl border ${accentBorder[w.accent]} bg-cream-light/70 p-6 transition-all hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-30px_rgba(17,17,17,0.35)]`}
+                  className={`card-lift group relative flex flex-col overflow-hidden rounded-2xl border ${accentBorder[w.accent]} bg-cream-light/70 p-6`}
                 >
                   {/* Hand-drawn motif accent — top-right corner */}
                   <div className="absolute -right-3 -top-3 h-24 w-24 opacity-55 transition-opacity group-hover:opacity-80">
@@ -164,10 +164,10 @@ export function Workshops() {
 
                   <a
                     href="#contacto"
-                    className="mt-5 inline-flex items-center gap-1.5 text-[0.85rem] text-charcoal/75 transition-colors hover:text-terracotta"
+                    className="animated-underline press-scale mt-5 inline-flex items-center gap-1.5 self-start text-[0.85rem] text-charcoal/75 transition-colors hover:text-terracotta"
                   >
                     {w.cta}
-                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ArrowUpRight className="icon-nudge h-3.5 w-3.5" />
                   </a>
                 </motion.article>
               );
@@ -190,10 +190,10 @@ export function Workshops() {
             </div>
             <a
               href="#contacto"
-              className="group inline-flex items-center gap-2 rounded-full bg-pacific-sun px-5 py-3 text-[0.92rem] text-charcoal transition-all hover:bg-cream"
+              className="press-scale group inline-flex items-center gap-2 rounded-full bg-pacific-sun px-5 py-3 text-[0.92rem] text-charcoal transition-all hover:bg-cream"
             >
               Escribirle
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="icon-nudge h-4 w-4" />
             </a>
           </motion.div>
         </motion.div>

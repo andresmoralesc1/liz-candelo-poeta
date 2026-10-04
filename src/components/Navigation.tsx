@@ -69,7 +69,7 @@ export function Navigation() {
             <a
               key={l.href}
               href={l.href}
-              className="text-[0.92rem] text-charcoal/75 transition-colors hover:text-terracotta"
+              className="animated-underline text-[0.92rem] text-charcoal/75 transition-colors hover:text-terracotta"
             >
               {l.label}
             </a>
@@ -79,7 +79,7 @@ export function Navigation() {
         <div className="flex items-center gap-3">
           <a
             href="#obra"
-            className="hidden items-center gap-2 rounded-full border border-charcoal/15 bg-charcoal px-4 py-2.5 text-[0.85rem] text-cream transition-all hover:bg-terracotta hover:border-terracotta md:inline-flex"
+            className="press-scale hidden items-center gap-2 rounded-full border border-charcoal/15 bg-charcoal px-4 py-2.5 text-[0.85rem] text-cream transition-all hover:bg-terracotta hover:border-terracotta md:inline-flex"
           >
             <BookOpen className="h-3.5 w-3.5" />
             Leer su obra
@@ -87,7 +87,7 @@ export function Navigation() {
           <button
             type="button"
             onClick={() => setOpen((s) => !s)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-charcoal/15 text-charcoal transition-colors hover:border-terracotta hover:text-terracotta lg:hidden"
+            className="press-scale inline-flex h-11 w-11 items-center justify-center rounded-full border border-charcoal/15 text-charcoal transition-colors hover:border-terracotta hover:text-terracotta lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-drawer"
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
@@ -120,7 +120,7 @@ export function Navigation() {
                   initial={{ opacity: 0, x: -8 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 + i * 0.04 }}
-                  className="border-b border-charcoal/8 py-4 font-display text-[1.4rem] text-charcoal last:border-b-0 transition-colors hover:text-terracotta"
+                  className="press-scale border-b border-charcoal/8 py-4 font-display text-[1.4rem] text-charcoal last:border-b-0 transition-colors hover:text-terracotta"
                 >
                   {l.label}
                 </motion.a>
