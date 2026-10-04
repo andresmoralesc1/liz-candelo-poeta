@@ -87,6 +87,16 @@ export const build: BuildItem[] = [
     lastUpdated: "2026-10-03",
   },
   {
+    id: "videos",
+    section: "06 — Videos",
+    title: "YouTube gallery + modal player",
+    spec: "Video featured 16:9 + grid de 4 videos. Modal con iframe YouTube autoplay. Lock scroll + Esc cierra. Video IDs en placeholder hasta que Liz comparta su canal.",
+    status: "in-progress",
+    verdict: "—",
+    note: "Estructura lista con 5 video slots (1 featured + 4 grid). Modal con portal, framer-motion AnimatePresence, framer blur backdrop.",
+    lastUpdated: "2026-10-03",
+  },
+  {
     id: "contact",
     section: "06 — Contacto",
     title: "Contact form & footer",
