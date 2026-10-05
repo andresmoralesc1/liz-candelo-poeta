@@ -162,18 +162,13 @@ export function Hero() {
 
         {/* Right: photo with sun disc halo behind — no mask, full photo visible */}
         <div className="relative order-1 flex items-center justify-center md:order-2 lg:col-span-6 lg:order-2">
-          {/* Sun disc — slightly larger than the photo, peeks around as a halo */}
+          {/* Sun disc — centered behind the photo, peeks around as a halo */}
           <motion.div
             aria-hidden
             initial={{ scale: 0.85, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.9, ease: easeOut, delay: 0.15 }}
-            className="absolute z-0 h-[320px] w-[320px] rounded-full bg-pacific-sun md:h-[420px] md:w-[420px] lg:h-[560px] lg:w-[560px]"
-            style={{
-              right: "5%",
-              top: "50%",
-              transform: "translateY(-50%)",
-            }}
+            className="absolute left-1/2 top-[38%] z-0 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-pacific-sun md:h-[420px] md:w-[420px] lg:h-[560px] lg:w-[560px]"
           />
 
           {/* Full photo, no mask, aspect 2:3 portrait */}
