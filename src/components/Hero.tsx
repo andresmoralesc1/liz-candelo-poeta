@@ -171,7 +171,7 @@ export function Hero() {
                 centering translate. */}
             <div
               aria-hidden
-              className="absolute left-1/2 top-1/2 z-0 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 md:h-[440px] md:w-[440px] lg:h-[560px] lg:w-[560px]"
+              className="absolute left-1/2 top-[32%] z-0 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 md:h-[440px] md:w-[440px] lg:h-[560px] lg:w-[560px]"
             >
               <motion.div
                 initial={{ scale: 0.85, opacity: 0 }}
