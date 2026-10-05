@@ -160,35 +160,43 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Right: photo with sun disc halo behind — no mask, full photo visible */}
+        {/* Right: photo with sun disc halo behind — disc is wrapped with
+            the photo so it stays perfectly centered no matter the column
+            height. */}
         <div className="relative order-1 flex items-center justify-center md:order-2 lg:col-span-6 lg:order-2">
-          {/* Sun disc — centered behind the photo, peeks around as a halo */}
-          <motion.div
-            aria-hidden
-            initial={{ scale: 0.85, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.9, ease: easeOut, delay: 0.15 }}
-            className="absolute left-1/2 top-[38%] z-0 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-pacific-sun md:h-[420px] md:w-[420px] lg:h-[560px] lg:w-[560px]"
-          />
-
-          {/* Full photo, no mask, aspect 2:3 portrait */}
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: easeOut, delay: 0.35 }}
-            className="photo-tilt relative z-10 w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] lg:max-w-[480px] lg:-translate-x-6"
-          >
-            <Image
-              src="/portrait/liz-candelo.jpg"
-              alt="Retrato de Liz Candelo Grueso"
-              width={1068}
-              height={1600}
-              priority
-              quality={90}
-              className="h-auto w-full select-none rounded-sm object-cover shadow-[0_30px_80px_-20px_rgba(17,17,17,0.25)]"
-              style={{ aspectRatio: "1068/1600" }}
+          <div className="relative">
+            {/* Sun disc — absolute to the photo wrapper, centered on it */}
+            <motion.div
+              aria-hidden
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1, rotate: 360 }}
+              transition={{
+                scale: { duration: 0.9, ease: easeOut, delay: 0.15 },
+                opacity: { duration: 0.9, ease: easeOut, delay: 0.15 },
+                rotate: { duration: 80, repeat: Infinity, ease: "linear", delay: 1.05 },
+              }}
+              className="absolute left-1/2 top-1/2 z-0 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-pacific-sun md:h-[440px] md:w-[440px] lg:h-[560px] lg:w-[560px]"
             />
-          </motion.div>
+
+            {/* Full photo, no mask, aspect 2:3 portrait */}
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: easeOut, delay: 0.35 }}
+              className="photo-tilt relative z-10 w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] lg:max-w-[480px] lg:-translate-x-6"
+            >
+              <Image
+                src="/portrait/liz-candelo.jpg"
+                alt="Retrato de Liz Candelo Grueso"
+                width={1068}
+                height={1600}
+                priority
+                quality={90}
+                className="h-auto w-full select-none rounded-sm object-cover shadow-[0_30px_80px_-20px_rgba(17,17,17,0.25)]"
+                style={{ aspectRatio: "1068/1600" }}
+              />
+            </motion.div>
+          </div>
 
           {/* Tiny caption under the photo — z-20 so it paints above the photo */}
           <motion.div
