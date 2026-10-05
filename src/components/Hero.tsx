@@ -183,7 +183,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: easeOut, delay: 0.35 }}
-              className="photo-tilt relative z-10 w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] lg:max-w-[480px] lg:-translate-x-6"
+              className="photo-tilt relative z-10 w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] lg:max-w-[480px]"
             >
               <Image
                 src="/portrait/liz-candelo.jpg"
