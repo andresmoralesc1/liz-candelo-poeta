@@ -10,6 +10,7 @@ import { Contact } from "@/components/Contact";
 import { Newsletter } from "@/components/Newsletter";
 import { Footer } from "@/components/Footer";
 import { BackToTop } from "@/components/BackToTop";
+import { PacificButterflies } from "@/components/PacificButterflies";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       >
         Saltar al contenido
       </a>
+      <PacificButterflies />
       <main>
         <Hero />
         <BookShowcase />
