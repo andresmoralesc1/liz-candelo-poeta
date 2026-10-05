@@ -210,3 +210,40 @@ select:focus {
   animation: stat-pop 0.7s var(--ease-pacific) both;
   transform-origin: left center;
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Marea (tide) — night mode palette override.
+   Set by the MareaToggle component on <html data-mode="night">.
+   The same token names re-declare at night so every utility class
+   that uses bg-cream / text-charcoal / border-charcoal etc.
+   automatically updates without a single component change.
+   ───────────────────────────────────────────────────────────── */
+
+:root[data-mode="night"] {
+  --color-cream: #0E1623;
+  --color-cream-light: #18243A;
+  --color-cream-deep: #0A111C;
+  --color-charcoal: #FBF8F1;
+  --color-charcoal-soft: #D8CDB6;
+  --color-ink: #F6F2E8;
+  --color-pacific-sun: #F4C968;
+  --color-pacific-sun-dark: #ECA81D;
+  --color-pacific-sun-soft: #F8D896;
+  --color-terracotta: #F78A5C;
+  --color-terracotta-dark: #DF5A2B;
+
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+/* Night-mode paper grain: a slightly stronger blend so the texture
+   reads on the darker background. */
+:root[data-mode="night"] .paper-grain::before {
+  opacity: 0.06;
+  mix-blend-mode: screen;
+}
+
+/* Smooth fade when toggling between modes. */
+html {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}

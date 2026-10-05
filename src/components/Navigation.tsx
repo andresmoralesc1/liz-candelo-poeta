@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, BookOpen } from "lucide-react";
+import { MareaToggle } from "./MareaToggle";
 
 const navLinks = [
   { href: "#inicio", label: "Inicio" },
@@ -83,6 +84,7 @@ export function Navigation() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <MareaToggle />
           <a
             href="#obra"
             className="press-scale hidden items-center gap-2 rounded-full border border-charcoal/15 bg-charcoal px-4 py-2.5 text-[0.85rem] text-cream transition-all hover:bg-terracotta hover:border-terracotta md:inline-flex"
