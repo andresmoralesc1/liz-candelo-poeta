@@ -25,8 +25,22 @@ export function Hero() {
     >
       {/* Subtle hand-drawn accents in the background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <BreezeLine className="absolute left-6 top-1/3 hidden h-6 w-44 text-charcoal/20 md:block" />
-        <SparkleDots className="absolute right-6 top-32 hidden h-24 w-56 text-charcoal/25 md:block" />
+        <motion.div
+          className="absolute left-6 top-1/3 hidden h-6 w-44 text-charcoal/20 md:block"
+          initial={{ x: 0, opacity: 0.5 }}
+          animate={{ x: [0, 28, 0], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <BreezeLine className="h-full w-full" />
+        </motion.div>
+        <motion.div
+          className="absolute right-6 top-32 hidden h-24 w-56 text-charcoal/25 md:block"
+          initial={{ opacity: 0.4 }}
+          animate={{ opacity: [0.3, 0.65, 0.3] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <SparkleDots className="h-full w-full" />
+        </motion.div>
 
         <motion.div
           aria-hidden
@@ -61,7 +75,14 @@ export function Hero() {
           animate={{ opacity: 1, rotate: 0 }}
           transition={{ duration: 1.4, ease: easePacific }}
         >
-          <PacificSun className="h-full w-full" />
+          <motion.div
+            className="h-full w-full"
+            initial={{ rotate: 0 }}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+          >
+            <PacificSun className="h-full w-full" />
+          </motion.div>
         </motion.div>
       </div>
 

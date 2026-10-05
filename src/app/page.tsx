@@ -11,6 +11,7 @@ import { Newsletter } from "@/components/Newsletter";
 import { Footer } from "@/components/Footer";
 import { BackToTop } from "@/components/BackToTop";
 import { PacificButterflies } from "@/components/PacificButterflies";
+import { PacificDivider } from "@/components/PacificDivider";
 
 export default function Home() {
   return (
@@ -25,7 +26,24 @@ export default function Home() {
       <PacificButterflies />
       <main>
         <Hero />
+        <PacificDivider tone="sun" />
         <BookShowcase />
+        <PacificDivider tone="terracotta" />
+        <Roots />
+        <PacificDivider tone="sun" />
+        <Workshops />
+        <Press />
+        <Reel
+          shortcode="DL4m00hsNuZ"
+          thumbnail="/media/liz/04-pancarta-filbo-2019.jpg"
+          thumbnailAlt="Liz Candelo frente a la pancarta oficial de la 32ª Feria Internacional del Libro de Bogotá, 2019"
+          meta="Instagram · Reel"
+          title="Lectura y voz en formato corto"
+          caption="Reel de Lizha Candelo en su cuenta de Instagram — lectura y performance del Pacífico colombiano."
+        />
+        <PacificDivider tone="terracotta" />
+        <Videos />
+        <Contact />
         <Roots />
         <Workshops />
         <Press />
