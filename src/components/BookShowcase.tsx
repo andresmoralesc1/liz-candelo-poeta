@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { BookOpen, Feather, ShoppingBag } from "lucide-react";
-import { BookCover } from "./BookCover";
 
 const easePacific = [0.16, 1, 0.3, 1] as const;
 
@@ -83,26 +83,22 @@ export function BookShowcase() {
           </motion.p>
 
           <div className="mt-14 grid items-start gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-            {/* Left: SVG book cover (no fabricated image) */}
+            {/* Left: Real book cover photo */}
             <motion.div
               variants={fadeUp}
               className="photo-tilt relative mx-auto w-full max-w-sm lg:mx-0"
             >
-              <div className="relative">
-                <BookCover className="w-full drop-shadow-[0_30px_50px_rgba(17,17,17,0.18)]" />
-                {/* Decorative hand-drawn accent under the cover */}
-                <svg
-                  aria-hidden
-                  className="absolute -bottom-8 left-1/2 h-12 w-48 -translate-x-1/2 text-charcoal/30"
-                  viewBox="0 0 200 30"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                >
-                  <path d="M4 18 Q 30 6 60 16 T 120 14 T 180 18" />
-                  <path d="M10 26 Q 40 16 70 24 T 140 22 T 196 26" />
-                </svg>
+              <div className="relative overflow-hidden rounded-sm shadow-[0_30px_50px_rgba(17,17,17,0.18)]">
+                <Image
+                  src="/media/liz/00-portada-la-casa.jpg"
+                  alt="Portada del libro «La casa más grande del mundo» de Liz Candelo Grueso (Ícono Editorial, 2019): palafito del Pacífico al atardecer con título y marca de la editorial"
+                  width={448}
+                  height={684}
+                  priority
+                  quality={90}
+                  sizes="(min-width: 1024px) 384px, (min-width: 640px) 50vw, 100vw"
+                  className="h-auto w-full select-none"
+                />
               </div>
               <p className="mt-12 text-center text-[0.72rem] uppercase tracking-[0.22em] text-charcoal/50">
                 Cubierta · Ícono Editorial · 2019 · ISBN 978-958-5472-16-7
