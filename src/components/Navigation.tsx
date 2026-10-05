@@ -87,11 +87,11 @@ export function Navigation() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10 lg:py-6">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10 lg:py-5">
         {/* Symbol logo (sun + butterfly + book + waves) */}
         <a
           href="#inicio"
-          className="group flex items-center gap-2.5"
+          className="group flex items-center gap-3"
           aria-label="Liz Candelo Grueso — Inicio"
         >
           <Image
@@ -100,14 +100,14 @@ export function Navigation() {
             width={487}
             height={403}
             priority
-            sizes="40px"
-            className="h-10 w-[48px] select-none transition-transform duration-500 group-hover:rotate-[-6deg]"
+            sizes="68px"
+            className="h-14 w-[68px] select-none transition-transform duration-500 group-hover:rotate-[-6deg]"
           />
           <span className="hidden flex-col leading-tight sm:flex">
-            <span className="font-display text-[1.05rem] text-charcoal">
+            <span className="font-display text-[1.15rem] text-charcoal">
               Liz Candelo Grueso
             </span>
-            <span className="text-[0.7rem] uppercase tracking-[0.18em] text-charcoal/55">
+            <span className="text-[0.78rem] uppercase tracking-[0.18em] text-charcoal/55">
               Poesía · Pacífico colombiano
             </span>
           </span>
