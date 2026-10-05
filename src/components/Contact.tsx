@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { AtSign, Mail, MapPin, Mic, Pen } from "lucide-react";
-import { ContactForm, ownerEmail } from "./ContactForm";
+import { ContactForm } from "./ContactForm";
+import { ownerEmail } from "@/lib/contact-info";
 
 const easePacific = [0.16, 1, 0.3, 1] as const;
 

@@ -1,7 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Camera, ExternalLink, Newspaper, Quote, Radio, Tv } from "lucide-react";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { Camera, ExternalLink, Maximize2, Newspaper, Quote, Radio, Tv, X } from "lucide-react";
 
 const easePacific = [0.16, 1, 0.3, 1] as const;
 
@@ -22,18 +24,47 @@ const fadeIn = {
 
 interface PhotoFrame {
   caption: string;
-  motif: "mic" | "book" | "sun" | "wave" | "palm" | "people" | "feather" | "lectern";
+  // When `src` is set, render the real photo. Otherwise fall back to the
+  // hand-drawn motif (placeholder for slots the author hasn't shared yet).
+  src?: string;
+  alt?: string;
+  motif?: "mic" | "book" | "sun" | "wave" | "palm" | "people" | "feather" | "lectern";
 }
 
 const photos: PhotoFrame[] = [
-  { caption: "Lectura pública", motif: "book" },
+  {
+    caption: "FILBo 2019 · Pancarta «lée te»",
+    motif: "people",
+    src: "/media/liz/04-pancarta-filbo-2019.jpg",
+    alt: "Liz Candelo frente a la pancarta oficial de la 32ª Feria Internacional del Libro de Bogotá, 2019",
+  },
+  {
+    caption: "FILBo 2019 · Firma de libros",
+    motif: "feather",
+    src: "/media/liz/02-firma-filbo-2019.jpg",
+    alt: "Liz Candelo firmando un libro en la FILBo 2019, con un busto decorativo y rosas amarillas sobre la mesa",
+  },
+  {
+    caption: "Icono Editorial · 2019",
+    motif: "book",
+    src: "/media/liz/03-gramatica-de-los-mundos-2019.jpg",
+    alt: "Mesa con el poemario «La Gramática de los Mundos» de Liz Candelo Grueso, flores y un jarro rosa",
+  },
+  {
+    caption: "Pintura · Lectura en escena",
+    motif: "mic",
+    src: "/media/liz/05-pintura-lectura-2019.jpg",
+    alt: "Pintura de una mujer con trenzas, turbante blanco, micrófono y libro abierto",
+  },
+  {
+    caption: "Retrato",
+    motif: "sun",
+    src: "/media/liz/01-retrato-bw.jpg",
+    alt: "Retrato en blanco y negro de Liz Candelo con turbante y trenzas",
+  },
   { caption: "Conversatorio", motif: "people" },
-  { caption: "Feria del libro", motif: "sun" },
-  { caption: "Lanzamiento", motif: "feather" },
-  { caption: "Panel académico", motif: "mic" },
   { caption: "Taller con docentes", motif: "lectern" },
   { caption: "Encuentro cultural", motif: "palm" },
-  { caption: "Entrevista radial", motif: "wave" },
 ];
 
 interface PressClip {
@@ -41,32 +72,37 @@ interface PressClip {
   outlet: string;
   title: string;
   date: string;
+  href: string;
 }
 
 const clips: PressClip[] = [
   {
     type: "prensa",
+    outlet: "Ese Pelo Tuyo",
+    title: "Liz Candelo: ¿Por qué llevas tu pelo como lo llevas?",
+    date: "Entrevista",
+    href: "https://esepelotuyo.com/liz-candelo-por-que-llevas-tu-pelo-como-lo-llevas/",
+  },
+  {
+    type: "academico",
+    outlet: "Quira · Medios",
+    title: "Lizha Candelo Grueso",
+    date: "Perfil",
+    href: "https://www.quira-medios.com/lizha-candelo-grueso/",
+  },
+  {
+    type: "prensa",
     outlet: "Medio impreso · pendiente",
     title: "«La poesía del Pacífico como casa»: reseña de La casa más grande del mundo",
     date: "Pendiente",
+    href: "#contacto",
   },
   {
     type: "radio",
     outlet: "Emisora cultural · pendiente",
     title: "Entrevista sobre infancia, territorio y memoria afrocolombiana",
     date: "Pendiente",
-  },
-  {
-    type: "academico",
-    outlet: "Revista universitaria · pendiente",
-    title: "Viento Libre y San Antonio: poética de los dos pueblos en la obra de Liz Candelo Grueso",
-    date: "Pendiente",
-  },
-  {
-    type: "tv",
-    outlet: "Canal cultural · pendiente",
-    title: "Mesa redonda con autores del Pacífico colombiano",
-    date: "Pendiente",
+    href: "#contacto",
   },
 ];
 
@@ -85,6 +121,23 @@ const typeChip: Record<PressClip["type"], string> = {
 };
 
 export function Press() {
+  const [openPhoto, setOpenPhoto] = useState<PhotoFrame | null>(null);
+
+  // Lock body scroll + Esc-to-close when lightbox is open
+  useEffect(() => {
+    if (!openPhoto) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenPhoto(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [openPhoto]);
+
   return (
     <section
       id="prensa"
@@ -102,7 +155,7 @@ export function Press() {
             className="flex items-center gap-2 text-[0.78rem] uppercase tracking-[0.22em] text-charcoal/55"
           >
             <Camera className="h-3.5 w-3.5 text-terracotta" />
-            <span>05 — Prensa y galería</span>
+            <span>Prensa y galería</span>
           </motion.div>
 
           <motion.h2
@@ -127,35 +180,73 @@ export function Press() {
               className="mb-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-[0.78rem] uppercase tracking-[0.2em] text-charcoal/55"
             >
               <span>Galería</span>
-              <span>8 momentos · archivo en construcción</span>
+              <span>5 fotos · archivo en construcción</span>
             </motion.div>
 
             <motion.div
               variants={container}
               className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4"
             >
-              {photos.map((p, i) => (
-                <motion.figure
-                  key={i}
-                  variants={fadeIn}
-                  className="group card-lift relative aspect-[3/4] overflow-hidden rounded-2xl border border-charcoal/8 bg-cream-light/70"
-                >
-                  {/* Hand-drawn motif */}
-                  <div className="absolute inset-0 flex items-center justify-center text-charcoal/35 transition-colors group-hover:text-charcoal/60">
-                    <PhotoMotif kind={p.motif} className="h-1/2 w-1/2" />
-                  </div>
+              {photos.map((p, i) => {
+                const Wrapper = p.src ? "button" : "div";
+                return (
+                  <motion.figure
+                    key={i}
+                    variants={fadeIn}
+                    className="group card-lift relative aspect-[3/4] overflow-hidden rounded-2xl border border-charcoal/8 bg-cream-light/70"
+                  >
+                    <Wrapper
+                      {...(p.src
+                        ? {
+                            type: "button" as const,
+                            onClick: () => setOpenPhoto(p),
+                            "aria-label": `Ampliar foto: ${p.caption}`,
+                          }
+                        : {})}
+                      className={
+                        p.src
+                          ? "absolute inset-0 z-10 cursor-zoom-in focus-visible:outline focus-visible:outline-2 focus-visible:outline-terracotta"
+                          : "absolute inset-0"
+                      }
+                    >
+                      {p.src ? (
+                        <Image
+                          src={p.src}
+                          alt={p.alt ?? p.caption}
+                          fill
+                          sizes="(min-width: 768px) 25vw, (min-width: 480px) 50vw, 100vw"
+                          quality={78}
+                          className="select-none object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center text-charcoal/35 transition-colors group-hover:text-charcoal/60">
+                          <PhotoMotif kind={p.motif ?? "book"} className="h-1/2 w-1/2" />
+                        </div>
+                      )}
 
-                  {/* Pending badge — top-right, doesn't compete with caption */}
-                  <span className="absolute right-2 top-2 rounded-full bg-charcoal/80 px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.16em] text-cream/90">
-                    Pendiente
-                  </span>
+                      {/* Pending badge — only on placeholder slots */}
+                      {!p.src && (
+                        <span className="absolute right-2 top-2 rounded-full bg-charcoal/80 px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.16em] text-cream/90">
+                          Pendiente
+                        </span>
+                      )}
 
-                  {/* Caption strip — single line, truncate-safe */}
-                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/85 via-charcoal/55 to-transparent px-3 py-2.5 text-cream">
-                    <span className="block truncate text-[0.78rem]">{p.caption}</span>
-                  </figcaption>
-                </motion.figure>
-              ))}
+                      {/* Zoom hint — only on real photos */}
+                      {p.src && (
+                        <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-charcoal/80 px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.16em] text-cream/90 opacity-0 transition-opacity group-hover:opacity-100">
+                          <Maximize2 className="h-2.5 w-2.5" />
+                          Ampliar
+                        </span>
+                      )}
+
+                      {/* Caption strip — single line, truncate-safe */}
+                      <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/85 via-charcoal/55 to-transparent px-3 py-2.5 text-cream">
+                        <span className="block truncate text-[0.78rem]">{p.caption}</span>
+                      </figcaption>
+                    </Wrapper>
+                  </motion.figure>
+                );
+              })}
             </motion.div>
           </div>
 
@@ -176,38 +267,41 @@ export function Press() {
               {clips.map((c, i) => {
                 const Icon = typeIcon[c.type];
                 return (
-                  <motion.li
-                    key={i}
-                    variants={fadeUp}
-                    className="group flex items-center gap-4 px-5 py-4 transition-colors hover:bg-cream/60"
-                  >
-                    <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-charcoal/12 bg-cream text-charcoal/65">
-                      <Icon className="h-4 w-4" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[0.68rem] ${typeChip[c.type]}`}
-                        >
-                          {c.type}
-                        </span>
-                        <span className="text-[0.78rem] text-charcoal/55">
-                          {c.outlet}
-                        </span>
+                  <motion.li key={i} variants={fadeUp}>
+                    <a
+                      href={c.href}
+                      target={c.href.startsWith("http") ? "_blank" : undefined}
+                      rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="group flex items-center gap-4 px-5 py-4 transition-colors hover:bg-cream/60"
+                    >
+                      <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-charcoal/12 bg-cream text-charcoal/65">
+                        <Icon className="h-4 w-4" />
                       </div>
-                      <p className="mt-1.5 font-display text-[1.05rem] leading-snug text-charcoal">
-                        {c.title}
-                      </p>
-                    </div>
-                    <div className="hidden flex-shrink-0 text-right md:block">
-                      <div className="text-[0.78rem] uppercase tracking-[0.18em] text-charcoal/45">
-                        {c.date}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2">
+                          <span
+                            className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[0.68rem] ${typeChip[c.type]}`}
+                          >
+                            {c.type}
+                          </span>
+                          <span className="text-[0.78rem] text-charcoal/55">
+                            {c.outlet}
+                          </span>
+                        </div>
+                        <p className="mt-1.5 font-display text-[1.05rem] leading-snug text-charcoal">
+                          {c.title}
+                        </p>
                       </div>
-                    </div>
-                    <ExternalLink
-                      aria-hidden
-                      className="icon-nudge hidden h-4 w-4 flex-shrink-0 text-charcoal/30 transition-colors group-hover:text-terracotta md:block"
-                    />
+                      <div className="hidden flex-shrink-0 text-right md:block">
+                        <div className="text-[0.78rem] uppercase tracking-[0.18em] text-charcoal/45">
+                          {c.date}
+                        </div>
+                      </div>
+                      <ExternalLink
+                        aria-hidden
+                        className="icon-nudge hidden h-4 w-4 flex-shrink-0 text-charcoal/30 transition-colors group-hover:text-terracotta md:block"
+                      />
+                    </a>
                   </motion.li>
                 );
               })}
@@ -223,6 +317,62 @@ export function Press() {
           </motion.p>
         </motion.div>
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {openPhoto && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal/90 p-4 backdrop-blur-sm md:p-8"
+            onClick={() => setOpenPhoto(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={openPhoto.alt ?? openPhoto.caption}
+          >
+            <motion.div
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.28, ease: easePacific }}
+              className="relative max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-2xl bg-charcoal shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setOpenPhoto(null)}
+                aria-label="Cerrar"
+                className="press-scale absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-cream/90 text-charcoal transition-colors hover:bg-pacific-sun"
+              >
+                <X className="h-4 w-4" />
+              </button>
+              <div className="relative aspect-[3/4] w-full md:aspect-[4/3]">
+                <Image
+                  src={openPhoto.src!}
+                  alt={openPhoto.alt ?? openPhoto.caption}
+                  fill
+                  sizes="(min-width: 1024px) 896px, 100vw"
+                  quality={92}
+                  className="select-none object-contain"
+                  priority
+                />
+              </div>
+              <div className="border-t border-charcoal/15 bg-cream/95 px-5 py-4 text-charcoal">
+                <p className="font-display text-[1.05rem] leading-snug">
+                  {openPhoto.caption}
+                </p>
+                {openPhoto.alt && openPhoto.alt !== openPhoto.caption && (
+                  <p className="mt-1 text-[0.78rem] text-charcoal/60">
+                    {openPhoto.alt}
+                  </p>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

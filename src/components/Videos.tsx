@@ -15,44 +15,28 @@ interface VideoItem {
 }
 
 // ─────────────────────────────────────────────────────────────
-// VIDEO LIST — replace with real YouTube IDs from Liz's channel.
-// 1) Open YouTube, click Share → "Embed", copy the ID after
-//    "https://youtu.be/" (e.g. dQw4w9WgXcQ).
-// 2) Paste the ID below. Title + context can be the actual
-//    description of the video.
+// VIDEO LIST — real YouTube IDs shared by Liz.
 // Featured video renders large at the top.
 // ─────────────────────────────────────────────────────────────
 const videos: VideoItem[] = [
   {
-    id: "dQw4w9WgXcQ", // ← REPLACE
-    title: "Lectura en voz alta · Café Literario",
-    context: "Lectura de poemas de «La casa más grande del mundo» en un café de Buenaventura, 2024.",
-    duration: "12:04",
+    id: "p9g8lrG1mOg",
+    title: "Liz Candelo: ¿Por qué llevas tu pelo como lo llevas?",
+    context:
+      "Episodio del ciclo Ese Pelo Tuyo. Diálogo corto sobre identidad, cabello afro y memoria corporal.",
     featured: true,
   },
   {
-    id: "dQw4w9WgXcQ", // ← REPLACE
-    title: "Conversatorio · Memoria y territorio",
-    context: "Mesa redonda con poetas del Pacífico colombiano. Biblioteca pública, 2023.",
-    duration: "48:21",
+    id: "NVxeUbvb8BA",
+    title: "Conmemoración de la abolición de la esclavización en Colombia",
+    context:
+      "Lectura y testimonio de Lizha Candelo en el acto por la abolición de la esclavización en Colombia. · Canal 7-24 Cultura en Vivo",
   },
   {
-    id: "dQw4w9WgXcQ", // ← REPLACE
-    title: "Entrevista · Radio Cultural",
-    context: "Conversación sobre infancia, etnia y oficio de la palabra.",
-    duration: "24:36",
-  },
-  {
-    id: "dQw4w9WgXcQ", // ← REPLACE
-    title: "Taller con docentes",
-    context: "Sesión de mediación de lectura con maestros de escuelas rurales.",
-    duration: "1:02:18",
-  },
-  {
-    id: "dQw4w9WgXcQ", // ← REPLACE
-    title: "Lanzamiento · Feria del libro",
-    context: "Lectura inaugural de «La casa más grande del mundo» en Icono Editorial.",
-    duration: "08:47",
+    id: "q4nLbuhzhgk",
+    title: "Entrevista a Lizha Candelo Grueso",
+    context:
+      "Conversación sobre obra, territorio y oficio poético. · Mientras Llueve",
   },
 ];
 
@@ -109,7 +93,7 @@ export function Videos() {
             className="flex items-center gap-2 text-[0.78rem] uppercase tracking-[0.22em] text-charcoal/55"
           >
             <Video className="h-3.5 w-3.5 text-terracotta" />
-            <span>06 — Videos</span>
+            <span>Videos</span>
           </motion.div>
 
           <motion.h2

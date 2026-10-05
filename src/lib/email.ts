@@ -4,6 +4,9 @@
 // used for other projects in this host. Credentials live in env.
 
 import nodemailer, { type Transporter } from "nodemailer";
+import { ownerEmail } from "./contact-info";
+
+export { ownerEmail };
 
 export type EmailMessage = {
   to: { email: string; name?: string };

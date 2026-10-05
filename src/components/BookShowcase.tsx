@@ -45,7 +45,7 @@ export function BookShowcase() {
             className="flex items-center gap-2 text-[0.78rem] uppercase tracking-[0.22em] text-charcoal/55"
           >
             <BookOpen className="h-3.5 w-3.5 text-terracotta" />
-            <span>01 — Su obra</span>
+            <span>Su obra</span>
           </motion.div>
 
           <motion.h2
@@ -68,9 +68,18 @@ export function BookShowcase() {
               className="border-b border-charcoal/30 transition-colors hover:border-terracotta hover:text-terracotta"
             >
               Icono Editorial
-            </a>
-            . La primera entrega de Liz Candelo Grueso en el circuito
-            literario colombiano.
+            </a>{" "}
+            en 2019. Presentado en la 32° Feria Internacional del Libro de
+            Bogotá, su voz se incluyó después en la antología{" "}
+            <a
+              href="https://www.elespectador.com/el-magazin-cultural/la-suma-de-las-voces/yo-vengo-a-ofrecer-mi-poema-poesia-para-la-union-de-america-latina/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-b border-charcoal/30 transition-colors hover:border-terracotta hover:text-terracotta"
+            >
+              «Yo vengo a ofrecer mi poema»
+            </a>{" "}
+            de El Espectador.
           </motion.p>
 
           <div className="mt-14 grid items-start gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
@@ -96,7 +105,7 @@ export function BookShowcase() {
                 </svg>
               </div>
               <p className="mt-12 text-center text-[0.72rem] uppercase tracking-[0.22em] text-charcoal/50">
-                Diseño en progreso · cubierta ilustrada
+                Cubierta · Ícono Editorial · 2019 · ISBN 978-958-5472-16-7
               </p>
             </motion.div>
 
@@ -113,6 +122,26 @@ export function BookShowcase() {
                   crecer, criar y recordar son actos colectivos.
                 </p>
               </motion.div>
+
+              {/* Illustration from inside the book */}
+              <motion.figure
+                variants={fadeUp}
+                className="card-lift relative overflow-hidden rounded-2xl border border-charcoal/8 bg-cream-light/40"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element -- local static asset */}
+                <img
+                  src="/media/liz/05-pintura-lectura-2019.jpg"
+                  alt="Ilustración del interior del libro: una mujer con trenzas, turbante blanco, micrófono y libro abierto"
+                  loading="lazy"
+                  className="aspect-[4/3] w-full select-none object-cover"
+                />
+                <figcaption className="flex items-center justify-between border-t border-charcoal/8 bg-cream-light/70 px-4 py-2.5 text-[0.72rem] uppercase tracking-[0.2em] text-charcoal/60">
+                  <span>Ilustración del libro</span>
+                  <span className="italic text-charcoal/45 normal-case tracking-normal">
+                    La lectura como acto público
+                  </span>
+                </figcaption>
+              </motion.figure>
 
               {/* Pulled quote — the only verified author line we have */}
               <motion.figure
@@ -162,6 +191,14 @@ export function BookShowcase() {
                 >
                   <ShoppingBag className="icon-nudge h-4 w-4" />
                   Comprar en Icono
+                </a>
+                <a
+                  href="https://www.libreriadelau.com/la-casa-mas-grande-del-mundo/p"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="press-scale inline-flex items-center gap-2 rounded-full border border-charcoal/20 bg-cream-light/60 px-5 py-3 text-[0.92rem] text-charcoal transition-all hover:border-terracotta hover:text-terracotta"
+                >
+                  Librería De La U
                 </a>
                 <a
                   href="#contacto"

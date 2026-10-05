@@ -4,33 +4,42 @@ import { BookShowcase } from "@/components/BookShowcase";
 import { Roots } from "@/components/Roots";
 import { Workshops } from "@/components/Workshops";
 import { Press } from "@/components/Press";
+import { Reel } from "@/components/Reel";
 import { Videos } from "@/components/Videos";
 import { Contact } from "@/components/Contact";
+import { Newsletter } from "@/components/Newsletter";
+import { Footer } from "@/components/Footer";
+import { BackToTop } from "@/components/BackToTop";
 
 export default function Home() {
   return (
     <>
       <Navigation />
+      <a
+        href="#obra"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-charcoal focus:px-4 focus:py-2 focus:text-[0.85rem] focus:text-cream"
+      >
+        Saltar al contenido
+      </a>
       <main>
         <Hero />
         <BookShowcase />
         <Roots />
         <Workshops />
         <Press />
+        <Reel
+          shortcode="DL4m00hsNuZ"
+          thumbnail="/media/liz/04-pancarta-filbo-2019.jpg"
+          thumbnailAlt="Liz Candelo frente a la pancarta oficial de la 32ª Feria Internacional del Libro de Bogotá, 2019"
+          meta="Instagram · Reel"
+          title="Lectura y voz en formato corto"
+          caption="Reel de Lizha Candelo en su cuenta de Instagram — lectura y performance del Pacífico colombiano."
+        />
         <Videos />
         <Contact />
-        <footer className="mx-auto max-w-6xl px-6 pb-16 pt-12 md:px-10">
-          <div className="flex flex-col items-start gap-3 border-t border-charcoal/10 pt-8 text-[0.78rem] uppercase tracking-[0.2em] text-charcoal/40 md:flex-row md:items-center md:justify-between">
-            <span>© Liz Candelo Grueso</span>
-            <span>Pacífico colombiano · Valle del Cauca</span>
-            <a
-              href="/status"
-              className="animated-underline transition-colors hover:text-terracotta"
-            >
-              Estado de build →
-            </a>
-          </div>
-        </footer>
+        <Newsletter />
+        <Footer />
+        <BackToTop />
       </main>
     </>
   );

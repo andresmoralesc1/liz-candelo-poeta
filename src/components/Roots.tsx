@@ -33,7 +33,7 @@ export function Roots() {
             className="flex items-center gap-2 text-[0.78rem] uppercase tracking-[0.22em] text-charcoal/55"
           >
             <Sprout className="h-3.5 w-3.5 text-terracotta" />
-            <span>02 — Recorrido</span>
+            <span>Recorrido</span>
           </motion.div>
 
           <motion.h2
@@ -99,8 +99,9 @@ export function Roots() {
                   <div className="flex h-9 w-9 items-center justify-center rounded-full border border-charcoal/20 bg-terracotta/20 text-charcoal">
                     <MapPin className="h-4 w-4" />
                   </div>
+                  <div className="mt-2 h-full w-px bg-charcoal/10" />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 pb-4">
                   <div className="text-[0.72rem] uppercase tracking-[0.22em] text-charcoal/55">
                     Crianza
                   </div>
@@ -115,6 +116,35 @@ export function Roots() {
                   <div className="mt-3 inline-flex items-center gap-1.5 text-[0.78rem] text-charcoal/55">
                     <Mountain className="h-3.5 w-3.5" />
                     Valle del Cauca · Andes
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div variants={fadeUp} className="flex gap-5">
+                <div className="flex flex-col items-center pt-1">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full border border-charcoal/20 bg-pacific-sun/30 text-charcoal">
+                    <Sprout className="h-4 w-4" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <div className="text-[0.72rem] uppercase tracking-[0.22em] text-charcoal/55">
+                    Herencia · 2019
+                  </div>
+                  <h3 className="font-display mt-1 text-[1.4rem] leading-snug text-charcoal md:text-[1.6rem]">
+                    La voz de Aquilino, su primer poemario
+                  </h3>
+                  <p className="mt-2 text-[0.95rem] leading-relaxed text-charcoal/75">
+                    Nieta de Aquilino Grueso —poeta de cabecera de
+                    Buenaventura—, Liz lleva la herencia al papel:{" "}
+                    <span className="italic">La casa más grande del mundo</span>
+                    , publicado por Ícono Editorial, se presenta en la 32°
+                    Feria Internacional del Libro de Bogotá y la incluye
+                    en la antología «Yo vengo a ofrecer mi poema» de
+                    El Espectador.
+                  </p>
+                  <div className="mt-3 inline-flex items-center gap-1.5 text-[0.78rem] text-charcoal/55">
+                    <Trees className="h-3.5 w-3.5" />
+                    Herencia literaria · Pacífico colombiano
                   </div>
                 </div>
               </motion.div>

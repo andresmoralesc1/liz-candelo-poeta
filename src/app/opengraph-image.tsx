@@ -40,8 +40,8 @@ export default function Image() {
         <img
           src={PHOTO_URL}
           alt=""
-          width="380"
-          height="570"
+          width={380}
+          height={570}
           style={{
             position: "absolute",
             right: "150px",

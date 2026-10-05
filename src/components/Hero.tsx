@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowDown, MapPin, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowUpRight, MapPin, Sparkles } from "lucide-react";
 import { PacificSun, Butterfly, BreezeLine, SparkleDots } from "./PacificMotifs";
 
 const easePacific = [0.16, 1, 0.3, 1] as const;
@@ -95,17 +95,48 @@ export function Hero() {
 
           <p className="mx-auto mt-8 max-w-md text-[0.98rem] leading-relaxed text-charcoal/80 md:mx-0 md:mt-10 md:text-[1.05rem]">
             Poeta, narradora e investigadora cultural del Pacífico
-            colombiano. Su libro inaugural —{" "}
+            colombiano. Su poemario inaugural —{" "}
             <span className="italic text-terracotta">La casa más grande del mundo</span>{" "}
-            — abre una memoria hecha de infancia, territorio y dignidad.
+            (Ícono Editorial, 2019) — abrió una memoria hecha de
+            infancia, territorio y dignidad; su voz se incluyó después
+            en la antología{" "}
+            <span className="italic">«Yo vengo a ofrecer mi poema»</span>{" "}
+            de El Espectador.
           </p>
-          <a
-            href="#obra"
-            className="press-scale mt-5 inline-flex min-h-[44px] items-center gap-1.5 self-start rounded-full px-4 py-2.5 text-[0.92rem] font-medium text-charcoal underline decoration-from-font underline-offset-4 transition-colors hover:text-terracotta md:self-auto"
-          >
-            Conocer su obra
-            <ArrowDown className="icon-nudge h-3.5 w-3.5" />
-          </a>
+          <div className="mt-6 flex flex-col items-center gap-2.5 md:items-start">
+            <a
+              href="#obra"
+              className="press-scale inline-flex min-h-[44px] items-center gap-1.5 self-start rounded-full px-4 py-2.5 text-[0.92rem] font-medium text-charcoal underline decoration-from-font underline-offset-4 transition-colors hover:text-terracotta md:self-auto"
+            >
+              Conocer su obra
+              <ArrowDown className="icon-nudge h-3.5 w-3.5" />
+            </a>
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-[0.85rem] md:justify-start">
+              <a
+                href="https://esepelotuyo.com/liz-candelo-por-que-llevas-tu-pelo-como-lo-llevas/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="animated-underline inline-flex items-center gap-1 text-charcoal/65 transition-colors hover:text-terracotta"
+              >
+                Leer entrevista
+                <ArrowUpRight className="h-3 w-3" />
+              </a>
+              <span className="text-charcoal/15">·</span>
+              <a
+                href="#reel"
+                className="animated-underline inline-flex items-center gap-1 text-charcoal/65 transition-colors hover:text-terracotta"
+              >
+                Ver el corto
+              </a>
+              <span className="text-charcoal/15">·</span>
+              <a
+                href="#contacto"
+                className="animated-underline inline-flex items-center gap-1 text-charcoal/65 transition-colors hover:text-terracotta"
+              >
+                Contactar
+              </a>
+            </div>
+          </div>
         </motion.div>
 
         {/* Right: photo with sun disc halo behind — no mask, full photo visible */}
