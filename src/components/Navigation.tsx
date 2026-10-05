@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, BookOpen } from "lucide-react";
 
@@ -49,12 +50,15 @@ export function Navigation() {
           className="group flex items-center gap-2.5"
           aria-label="Liz Candelo Grueso — Inicio"
         >
-          <span
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-charcoal/15 bg-pacific-sun/15 font-display text-[1.1rem] text-charcoal transition-all group-hover:rotate-[-6deg] group-hover:border-terracotta group-hover:text-terracotta"
-            aria-hidden="true"
-          >
-            <span className="italic">LC</span>
-          </span>
+          <Image
+            src="/brand/liz-candelo-symbol.png"
+            alt=""
+            width={487}
+            height={403}
+            priority
+            sizes="40px"
+            className="h-10 w-[48px] select-none transition-transform duration-500 group-hover:rotate-[-6deg]"
+          />
           <span className="hidden flex-col leading-tight sm:flex">
             <span className="font-display text-[1.05rem] text-charcoal">
               Liz Candelo Grueso
